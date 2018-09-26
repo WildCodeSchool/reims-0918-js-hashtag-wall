@@ -3,3 +3,5 @@
 Developers:
 
 Corentin de Soto Cobet
+
+Benoît Niveau
