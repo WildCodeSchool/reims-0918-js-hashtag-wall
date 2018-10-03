@@ -5,8 +5,7 @@ const Footer = () => (
     <ul>
       <li>
         {" "}
-        <img src="images/logo_wall_noir.png" alt="icone_wall" />
-        Wall
+        <img src="images/logo_wall_noir.png" alt="logo_wall" />
       </li>
       <li>Made with Love by Quentin - Benoît - Corentin - Leuthsouline</li>
     </ul>
