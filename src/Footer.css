@@ -1,0 +1,13 @@
+footer li {
+  list-style-type: none;
+  color: white;
+  font-size: 18px;
+}
+
+footer {
+  background-color: #677179;
+}
+
+footer img {
+  width: 50%;
+}
