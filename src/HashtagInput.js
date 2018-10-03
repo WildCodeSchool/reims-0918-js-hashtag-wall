@@ -1,5 +1,5 @@
 import React from "react";
-import "./Hashtaginput.css"
+import "./HashtagInput.css"
 import { InputGroup, InputGroupAddon, Input, Button } from "reactstrap";
 
 const HashtagInput = () => {
