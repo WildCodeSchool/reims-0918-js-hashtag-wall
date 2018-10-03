@@ -1,24 +1,19 @@
 import React from "react";
 import "./Footer.css";
+import { Container, Row, Col } from "reactstrap";
 
 const Footer = () => (
-  <footer>
-    <div class="container">
-      <ul class="row">
-        <li class="col-6">
-          <img
-            src="images/logo_wall_noir.png"
-            alt="logo_wall"
-            className="logo"
-          />
-        </li>
-        <li class="col col-6 pt-3">
-          Made with <span class="heart">❤</span> by Quentin - Benoît - Corentin
-          - Leuthsouline
-        </li>
-      </ul>
-    </div>
-  </footer>
+  <Container-fluid>
+    <Row className="background">
+      <Col sm="6">
+        <img className="img" src="images/logo_wall_noir.png" alt="logo_wall" />
+      </Col>
+      <Col className="text-right wilders" sm="6">
+        Made with <span className="heart">❤</span> by Quentin - Benoît -
+        Corentin - Leuthsouline
+      </Col>
+    </Row>
+  </Container-fluid>
 );
 
 export default Footer;
