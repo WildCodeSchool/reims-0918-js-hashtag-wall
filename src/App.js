@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 import "./App.css";
-
+import ModalHelp from "./ModalHelp";
+import HashtagInput from "./HashtagInput";
+import Footer from "./Footer";
 
 class App extends Component {
   render() {
@@ -8,6 +10,9 @@ class App extends Component {
       <div className="App">
         <a>-</a>
         <Header />
+        <ModalHelp />
+        <HashtagInput />
+        <Footer />
       </div>
     );
   }
