@@ -1,0 +1,19 @@
+import React from "react";
+import "./Footer.css";
+import { Container, Row, Col } from "reactstrap";
+
+const Footer = () => (
+  <Container-fluid>
+    <Row className="background">
+      <Col sm="6">
+        <img className="img" src="images/logo_wall_noir.png" alt="logo_wall" />
+      </Col>
+      <Col className="text-right wilders" sm="6">
+        Made with <span className="heart">❤</span> by Quentin - Benoît -
+        Corentin - Leuthsouline
+      </Col>
+    </Row>
+  </Container-fluid>
+);
+
+export default Footer;
