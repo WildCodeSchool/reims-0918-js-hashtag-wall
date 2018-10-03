@@ -1,13 +1,13 @@
-footer li {
-  list-style-type: none;
+.background {
+  background-color: #2c3e50;
+  padding: 0;
+}
+
+.img {
+  width: 30%;
+}
+
+.wilders {
+  margin: auto;
   color: white;
-  font-size: 18px;
-}
-
-footer {
-  background-color: #677179;
-}
-
-footer img {
-  width: 50%;
 }
