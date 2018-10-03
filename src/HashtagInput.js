@@ -1,17 +1,20 @@
 import React from "react";
-import { InputGroup, InputGroupAddon, Input } from "reactstrap";
+import "./Hashtaginput.css"
+import { InputGroup, InputGroupAddon, Input, Button } from "reactstrap";
 
 const HashtagInput = () => {
   return (
     <div>
       <InputGroup size="lg">
         <InputGroupAddon addonType="prepend">
-          #
+        #
         </InputGroupAddon>
-        <Input className="sizeinput" placeholder="Your Tag !" />
+        <Input className="sizeInput" placeholder="Your Tag !" />
       </InputGroup>
+      <Button color="primary">Start</Button> 
     </div>
   );
 };
+
 
 export default HashtagInput;

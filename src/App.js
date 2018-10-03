@@ -1,9 +1,8 @@
 import React, { Component } from "react";
 import "./App.css";
-import "./Hashtaginput.css"
-import ModalHelp from './modalhelp'
+import ModalHelp from './ModalHelp'
 import HashtagInput from "./HashtagInput";
-import Buttoninput from "./buttoninput";
+
 
 class App extends Component {
   render() {
@@ -11,7 +10,6 @@ class App extends Component {
       <div className="App">
         <ModalHelp />
         <HashtagInput />
-        <Buttoninput />
       </div>
     );
   }
