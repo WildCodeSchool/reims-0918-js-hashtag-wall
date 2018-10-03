@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import "./App.css";
-import ModalHelp from './ModalHelp'
+import ModalHelp from "./ModalHelp";
 import HashtagInput from "./HashtagInput";
 import Footer from "./Footer";
 
@@ -9,6 +9,7 @@ class App extends Component {
     return (
       <div className="App">
         <a>-</a>
+        <Header />
         <ModalHelp />
         <HashtagInput />
         <Footer />
