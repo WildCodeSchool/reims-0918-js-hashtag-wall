@@ -32,7 +32,7 @@ class ModalHelp extends Component {
 
                     </ModalBody>
                     <ModalFooter>
-                        <Button color="primary" onClick={this.toggle}>Understood !</Button>
+                        <Button className="buttonColors" onClick={this.toggle}>Understood !</Button>
                     </ModalFooter>
                 </Modal>
             </div>
