@@ -22,7 +22,7 @@ class ModalHelp extends Component {
         const closeBtn = <button className="close" onClick={this.toggle}>&times;</button>;
 
         return (
-            <div>
+            <div className="col-1 offset-11">
                 <Button color="primary" onClick={this.toggle}>{this.props.buttonLabel}#Help</Button>
                 <Modal isOpen={this.state.modal} toggle={this.toggle} className={this.props.className}>
                     <ModalHeader toggle={this.toggle} close={closeBtn}>How to use the #Wall ?</ModalHeader>
@@ -32,7 +32,7 @@ class ModalHelp extends Component {
 
                     </ModalBody>
                     <ModalFooter>
-                        <Button color="primary" onClick={this.toggle}>Understood !</Button>
+                        <Button className="buttonColors" onClick={this.toggle}>Understood !</Button>
                     </ModalFooter>
                 </Modal>
             </div>
