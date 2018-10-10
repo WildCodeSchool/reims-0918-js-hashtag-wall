@@ -16,14 +16,15 @@ const TweetCard = props => {
     <div>
       <Container fluid className="p-0">
         <Card style={{ maxheight: "100px" }}>
-          <CardBody className="pt-2">
+          <CardBody className="pt-2 pb-0">
             <Row>
-              <CardTitle>
-                <img src={props.logo} /> {}
-                {props.author}
-                <CardSubtitle className="text-center pl-5">
-                  {props.id}
-                </CardSubtitle>
+              <CardTitle className="w-100">
+                <img className="float-left mr-2" src={props.logo} />
+                <div className="pt-2">
+                  {props.author}
+                  <br />
+                  <span style={{ "font-size": "15px" }}>{props.id}</span>
+                </div>
               </CardTitle>
             </Row>
           </CardBody>
@@ -31,20 +32,20 @@ const TweetCard = props => {
           <img className="w-100" src={props.picture} />
 
           <CardBody className="pb-2">
-            <Row className="text-center">
+            <Row>
               <Col xs="12">
-                <CardText className="text-justify pb-2">
+                <CardText className="pb-2 text-justify">
                   {props.message}
                 </CardText>
               </Col>
               <Col xs="6">
-                <CardText>
+                <CardText className="text-center">
                   <span className="heart">❤</span>
                   {props.likeNb}
                 </CardText>
               </Col>
               <Col xs="6">
-                <CardText>
+                <CardText className="text-center">
                   <img src="images/rt.png" style={{ width: "18%" }} />
                   {props.rtNb}
                 </CardText>

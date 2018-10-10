@@ -115,7 +115,11 @@ class App extends Component {
         </Container>
         <Container fluid className="tweet mt-5" style={{ height: "100vh" }}>
           <Row>
-            <Col xs="12" className="text-center" style={{ color: "white" }}>
+            <Col
+              xs="12"
+              className="text-center mt-5 mb-4"
+              style={{ color: "white" }}
+            >
               <h1>#GrandSchtroumpf</h1>
             </Col>
           </Row>
