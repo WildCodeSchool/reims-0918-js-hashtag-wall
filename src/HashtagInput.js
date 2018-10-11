@@ -7,7 +7,7 @@ const HashtagInput = () => {
     <div>
       <InputGroup size="lg">
         <InputGroupAddon addonType="prepend">#</InputGroupAddon>
-        <Input className="sizeInput" placeholder="Your Tag !" />
+        <Input className="sizeInput" placeholder="Your Tag !" type="text" />
       </InputGroup>
       <div className="buttonPosition">
         <Button className="w-25 mt-5" color="primary">
