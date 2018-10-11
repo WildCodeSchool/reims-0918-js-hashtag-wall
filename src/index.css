@@ -20,3 +20,14 @@ body {
     background-position: 0% 50%;
   }
 }
+
+.btn-primary {
+  background-color: rgba(41, 41, 53, 0.4)!important;
+  border: 2px solid white!important;
+
+}
+
+.btn-primary:hover {
+ background-color: rgba(41, 41, 53, 0)!important;
+ border: 2px solid white!important;
+}

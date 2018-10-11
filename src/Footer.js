@@ -4,9 +4,9 @@ import { Container, Row, Col } from "reactstrap";
 
 const Footer = () => (
   <Container-fluid>
-    <Row className="background">
+    <Row className="background positionFooter w-100">
       <Col sm="6">
-        <img className="img" src="images/logo_wall_noir.png" alt="logo_wall" />
+        <img className="img" src="images/logo_wall_white.png" alt="logo_wall" />
       </Col>
       <Col className="text-right wilders" sm="6">
         Made with <span className="heart">❤</span> by Quentin - Benoît -
