@@ -122,10 +122,10 @@ class App extends Component {
               <h1>#GrandSchtroumpf</h1>
             </Col>
             <Col xs="4" className="w-15 pb-3 text-right" >
-            <Button color="primary" >
-          <p className="textButton">#New</p>
-        </Button>      
-        </Col> 
+              <Button color="primary" >
+                <p className="textButton">#New</p>
+              </Button>      
+            </Col> 
           </Row>
           <CardColumns>
             {this.state.posts.map(post => (
