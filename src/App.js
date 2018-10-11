@@ -4,12 +4,8 @@ import ModalHelp from "./ModalHelp";
 import HashtagInput from "./HashtagInput";
 import Footer from "./Footer";
 import Header from "./Header";
-<<<<<<< HEAD
-import { Container, Row, Col } from "reactstrap";
-=======
 import TweetCard from "./TweetCard";
 import { Container, Row, Col, CardColumns } from "reactstrap";
->>>>>>> c0d0a1924e0d72bafd091dd73d78b854a705deac
 
 class App extends Component {
   constructor(props) {
