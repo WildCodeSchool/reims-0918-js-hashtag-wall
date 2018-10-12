@@ -29,7 +29,10 @@ const TweetCard = props => {
             </Row>
           </CardBody>
 
-          <img className="w-100" src={props.picture} />
+          {props.picture !== "N/A" &&
+            props.picture !== ".." && (
+              <img className="w-100" src={props.picture} />
+            )}
 
           <CardBody className="pb-2">
             <Row>
@@ -46,7 +49,7 @@ const TweetCard = props => {
               </Col>
               <Col xs="6">
                 <CardText className="text-center">
-                  <img src="images/rt.png" style={{ width: "18%" }} />
+                  <img src="images/rt.png" style={{ width: "25px" }} />
                   {props.rtNb}
                 </CardText>
               </Col>
