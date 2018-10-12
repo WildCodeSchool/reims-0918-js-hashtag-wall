@@ -29,7 +29,10 @@ const TweetCard = props => {
             </Row>
           </CardBody>
 
-          <img className="w-100" src={props.picture} />
+          {props.picture !== "N/A" &&
+            props.picture !== ".." && (
+              <img className="w-100" src={props.picture} />
+            )}
 
           <CardBody className="pb-2">
             <Row>
