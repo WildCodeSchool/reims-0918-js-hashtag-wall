@@ -1,4 +1,4 @@
-import React, { Component, Fragment } from "react";
+import React, { Component } from "react";
 import "./App.css";
 import ModalHelp from "./ModalHelp";
 import HashtagInput from "./HashtagInput";
@@ -91,18 +91,18 @@ class App extends Component {
         }
       ],
       title: "",
-      isTweetLaunch: false
+      isTweetPageDisplayed: false
     };
-    this.handleHomePage = this.handleHomePage.bind(this);
-    this.handleTweetPage = this.handleTweetPage.bind(this);
+    this.handleClickNewButton = this.handleClickNewButton.bind(this);
+    this.handleClickStartButton = this.handleClickStartButton.bind(this);
   }
 
-  handleHomePage() {
-    this.setState({ isTweetLaunch: false });
+  handleClickNewButton() {
+    this.setState({ isTweetPageDisplayed: false });
   }
 
-  handleTweetPage() {
-    this.setState({ isTweetLaunch: true });
+  handleClickStartButton() {
+    this.setState({ isTweetPageDisplayed: true });
   }
 
   handleTitleChange = event => {
@@ -117,51 +117,53 @@ class App extends Component {
   render() {
     return (
       <div className="App prout">
-        {!this.state.isTweetLaunch ? (
-          <Fragment>
-            <Container fluid style={{ height: "100vh" }}>
-              <Row className="justify-content-center">
-                <Header />
-              </Row>
+        {!this.state.isTweetPageDisplayed ? (
+          <Container fluid style={{ height: "100vh" }}>
+            <Row className="justify-content-center">
+              <Header />
+            </Row>
 
-              <Row className="justify-content-center mt-5">
-                <Col sm="6" className="mt-5">
-                  <HashtagInput
-                    title={this.state.title}
-                    onTitleChange={this.handleTitleChange}
-                    tweetPageOnClick={this.handleTweetPage}
-                  />
-                </Col>
-              </Row>
+            <Row className="justify-content-center mt-5">
+              <Col sm="6" className="mt-5">
+                <HashtagInput
+                  title={this.state.title}
+                  onTitleChange={this.handleTitleChange}
+                  tweetPageOnClick={this.handleClickStartButton}
+                />
+              </Col>
+            </Row>
 
-              <Row>
-                <ModalHelp className="w-100" />
-              </Row>
-              <Row>
-                <Footer />
-              </Row>
-            </Container>
-          </Fragment>
+            <Row>
+              <ModalHelp className="w-100" />
+            </Row>
+            <Row>
+              <Footer />
+            </Row>
+          </Container>
         ) : (
-          <Fragment>
-            <Container fluid className="tweet mt-5" style={{ height: "100vh" }}>
-              <Row>
-                <Col xs="8" style={{ color: "white" }}>
-                  <h1 id="titleHashtag">#{this.state.title}</h1>
-                </Col>
-                <Col xs="4" className="w-15 pb-3 text-right">
-                  <Button onClick={this.handleHomePage} color="primary">
-                    <p className="textButton">#New</p>
-                  </Button>
-                </Col>
-              </Row>
-              <CardColumns>
-                {this.state.posts.map(post => (
-                  <TweetCard {...post} />
-                ))}
-              </CardColumns>
-            </Container>
-          </Fragment>
+          <Container fluid className="tweet" style={{ height: "100vh" }}>
+            <Row>
+              <Col xs="8" style={{ color: "white" }}>
+                <h1 className="mt-3" id="titleHashtag">
+                  #{this.state.title}
+                </h1>
+              </Col>
+              <Col xs="4" className="w-15 pb-3 text-right">
+                <Button
+                  className="mt-3"
+                  onClick={this.handleClickNewButton}
+                  color="primary"
+                >
+                  <p className="textButton ">#New</p>
+                </Button>
+              </Col>
+            </Row>
+            <CardColumns>
+              {this.state.posts.map(post => (
+                <TweetCard {...post} />
+              ))}
+            </CardColumns>
+          </Container>
         )}
       </div>
     );
