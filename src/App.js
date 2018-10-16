@@ -62,7 +62,7 @@ class App extends Component {
 
   render() {
     return (
-      <div className="App prout">
+      <div>
         {!this.state.isTweetPageDisplayed ? (
           <Container fluid style={{ height: "100vh" }}>
             <Row className="justify-content-center">
