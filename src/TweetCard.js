@@ -21,6 +21,7 @@ const TweetCard = props => {
                   className="float-left mr-2"
                   src={props.logo}
                   alt="avatar"
+                  style={{ "border-radius": "25px" }}
                 />
                 <div className="pt-2">
                   {props.author}
@@ -31,10 +32,13 @@ const TweetCard = props => {
             </Row>
           </CardBody>
 
-          {props.picture !== "N/A" &&
-            props.picture !== ".." && (
-              <img className="w-100" src={props.picture} alt="tweetPicture" />
-            )}
+          {props.picture !== "N/A" && (
+            <img
+              className="w-100"
+              src={props.picture}
+              style={{ "max-height": "450px" }}
+            />
+          )}
 
           <CardBody className="pb-2">
             <Row>
