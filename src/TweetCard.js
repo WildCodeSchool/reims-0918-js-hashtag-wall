@@ -1,11 +1,9 @@
 import React from "react";
 import {
   Card,
-  CardImg,
   CardText,
   CardBody,
   CardTitle,
-  CardSubtitle,
   Container,
   Row,
   Col
@@ -19,7 +17,11 @@ const TweetCard = props => {
           <CardBody className="pt-2 pb-0">
             <Row>
               <CardTitle className="w-100">
-                <img className="float-left mr-2" src={props.logo} />
+                <img
+                  className="float-left mr-2"
+                  src={props.logo}
+                  alt="avatar"
+                />
                 <div className="pt-2">
                   {props.author}
                   <br />
@@ -31,15 +33,13 @@ const TweetCard = props => {
 
           {props.picture !== "N/A" &&
             props.picture !== ".." && (
-              <img className="w-100" src={props.picture} />
+              <img className="w-100" src={props.picture} alt="tweetPicture" />
             )}
 
           <CardBody className="pb-2">
             <Row>
               <Col xs="12">
-                <CardText className="pb-2 text-justify">
-                  {props.message}
-                </CardText>
+                <CardText className="pb-2">{props.message}</CardText>
               </Col>
               <Col xs="6">
                 <CardText className="text-center">
@@ -49,7 +49,7 @@ const TweetCard = props => {
               </Col>
               <Col xs="6">
                 <CardText className="text-center">
-                  <img src="images/rt.png" style={{ width: "25px" }} />
+                  <img src="images/rt.png" style={{ width: "25px" }} alt="RT" />
                   {props.rtNb}
                 </CardText>
               </Col>
