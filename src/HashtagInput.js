@@ -16,7 +16,12 @@ const HashtagInput = props => {
         />
       </InputGroup>
       <div className="buttonPosition">
-        <Button href="#titleHashtag" className="w-25 mt-5" color="primary">
+        <Button
+          href="#titleHashtag"
+          className="w-25 mt-5"
+          color="primary"
+          onClick={() => props.getTweet(props.title)}
+        >
           <p className="buttonText">#Start</p>
         </Button>
       </div>

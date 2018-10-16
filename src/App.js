@@ -11,88 +11,38 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      posts: [
-        {
-          picture: "N/A",
-          author: "Grand Schtroumpf",
-          id: "@GrandSchtroumpf",
-          logo:
-            "https://images.sftcdn.net/images/t_app-logo-l,f_auto,dpr_auto/p/f330ada2-9b30-11e6-bf8f-00163ec9f5fa/4185558938/smurfs-village-logo.png",
-          message:
-            "Le monde se schtroumpfe en deux catégories : ceux qui ont le schtroumpf chargé et ceux qui schtroumpfent. Toi, tu schtroumpfes. #Schtroumpf",
-          likeNb: 15,
-          rtIcon: "",
-          rtNb: 150
-        },
-        {
-          picture:
-            "https://img.20mn.fr/taVbOGtBTAy_2mgnIAysxg/310x190_grand-schtroumpf-double-gerard-hernandez-schroumpfs-village-perdu-kelly-asbury",
-
-          author: "Grand Schtroumpf",
-          id: "@GrandSchtroumpf",
-          logo:
-            "https://images.sftcdn.net/images/t_app-logo-l,f_auto,dpr_auto/p/f330ada2-9b30-11e6-bf8f-00163ec9f5fa/4185558938/smurfs-village-logo.png",
-          message:
-            "Le monde se schtroumpfe en deux catégories : ceux qui ont le schtroumpf chargé et ceux qui schtroumpfent. Toi, tu schtroumpfes. #Schtroumpf",
-          likeNb: 15,
-          rtIcon: "",
-          rtNb: 150
-        },
-        {
-          picture:
-            "https://img.20mn.fr/taVbOGtBTAy_2mgnIAysxg/310x190_grand-schtroumpf-double-gerard-hernandez-schroumpfs-village-perdu-kelly-asbury",
-          author: "Grand Schtroumpf",
-          id: "@GrandSchtroumpf",
-          logo:
-            "https://images.sftcdn.net/images/t_app-logo-l,f_auto,dpr_auto/p/f330ada2-9b30-11e6-bf8f-00163ec9f5fa/4185558938/smurfs-village-logo.png",
-          message:
-            "Le monde se schtroumpfe en deux catégories : ceux qui ont le schtroumpf chargé et ceux qui schtroumpfent. Toi, tu schtroumpfes. #Schtroumpf",
-          likeNb: 15,
-          rtIcon: "",
-          rtNb: 150
-        },
-        {
-          picture:
-            "https://img.20mn.fr/taVbOGtBTAy_2mgnIAysxg/310x190_grand-schtroumpf-double-gerard-hernandez-schroumpfs-village-perdu-kelly-asbury",
-          author: "Grand Schtroumpf",
-          id: "@GrandSchtroumpf",
-          logo:
-            "https://images.sftcdn.net/images/t_app-logo-l,f_auto,dpr_auto/p/f330ada2-9b30-11e6-bf8f-00163ec9f5fa/4185558938/smurfs-village-logo.png",
-          message:
-            "Le monde se schtroumpfe en deux catégories : ceux qui ont le schtroumpf chargé et ceux qui schtroumpfent. Toi, tu schtroumpfes. #Schtroumpf",
-          likeNb: 15,
-          rtIcon: "",
-          rtNb: 150
-        },
-        {
-          picture:
-            "https://img.20mn.fr/taVbOGtBTAy_2mgnIAysxg/310x190_grand-schtroumpf-double-gerard-hernandez-schroumpfs-village-perdu-kelly-asbury",
-          author: "Grand Schtroumpf",
-          id: "@GrandSchtroumpf",
-          logo:
-            "https://images.sftcdn.net/images/t_app-logo-l,f_auto,dpr_auto/p/f330ada2-9b30-11e6-bf8f-00163ec9f5fa/4185558938/smurfs-village-logo.png",
-          message:
-            "Le monde se schtroumpfe en deux catégories : ceux qui ont le schtroumpf chargé et ceux qui schtroumpfent. Toi, tu schtroumpfes. #Schtroumpf",
-          likeNb: 15,
-          rtIcon: "",
-          rtNb: 150
-        },
-        {
-          picture: "..",
-          author: "Grand Schtroumpf",
-          id: "@GrandSchtroumpf",
-          logo:
-            "https://images.sftcdn.net/images/t_app-logo-l,f_auto,dpr_auto/p/f330ada2-9b30-11e6-bf8f-00163ec9f5fa/4185558938/smurfs-village-logo.png",
-          message:
-            "Le monde se schtroumpfe en deux catégories : ceux qui ont le schtroumpf chargé et ceux qui schtroumpfent. Toi, tu schtroumpfes. #Schtroumpf",
-          likeNb: 15,
-          rtIcon: "",
-          rtNb: 150
-        }
-      ],
-      title: ""
+      posts: []
     };
   }
+
+  getTweet(hashtag) {
+    fetch(`https://safe-savannah-17783.herokuapp.com/?tag=${hashtag}`)
+      .then(results => results.json()) // conversion du résultat en JSON
+      .then(data => {
+        console.log(this.TweetToPost(data));
+        // Une fois les données récupérées, on va mettre à jour notre state avec les nouvelles données
+        // this.setState({
+        //   posts: data
+        // });
+      });
+  }
+  TweetToPost = tweets => {
+    return tweets.statuses.map(tweet => {
+      const pictureMedia = tweet.entities.media
+        ? tweet.entities.media[0].media_url
+        : "..";
+      return {
+        picture: pictureMedia,
+        message: tweet.full_text,
+        author: tweet.user.name,
+        logo: tweet.user.profile_image_url,
+        likeNb: tweet.favorite_count,
+        rtNb: tweet.retweet_count,
+        id: `@${tweet.user.screen_name}`
+      };
+    });
+  };
+
   handleTitleChange = event => {
     this.setState({
       title: event.target.value.replace(
@@ -115,6 +65,7 @@ class App extends Component {
               <HashtagInput
                 title={this.state.title}
                 onTitleChange={this.handleTitleChange}
+                getTweet={this.getTweet}
               />
             </Col>
           </Row>
