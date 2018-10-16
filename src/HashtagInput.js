@@ -11,16 +11,16 @@ const HashtagInput = props => {
           className="sizeInput"
           value={props.title}
           placeholder="Your Tag !"
-          onChange={props.onTitleChange}
+          onChange={props.onInputContent}
           type="text"
         />
       </InputGroup>
       <div className="buttonPosition">
         <Button
-          onClick={props.tweetPageOnClick}
           href="#titleHashtag"
           className="w-25 mt-5"
           color="primary"
+          onClick={() => props.getTweet(props.title)}
         >
           <p className="buttonText">#Start</p>
         </Button>
