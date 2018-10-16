@@ -86,7 +86,7 @@ class App extends Component {
           <Container fluid className="tweet" style={{ height: "100vh" }}>
             <Row id="wallHeader" style={{ color: "white" }}>
               <Button color="primary">
-                <p className="textButton ">#Top tweets</p>
+                <p className="textButton ">#Tops</p>
               </Button>
 
               <h1 id="titleHashtag" className="mt-2">
