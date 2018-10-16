@@ -20,6 +20,7 @@ const TweetCard = props => {
                 <img
                   className="float-left mr-2"
                   src={props.logo}
+                  alt="avatar"
                   style={{ "border-radius": "25px" }}
                 />
                 <div className="pt-2">
@@ -52,7 +53,7 @@ const TweetCard = props => {
               </Col>
               <Col xs="6">
                 <CardText className="text-center">
-                  <img src="images/rt.png" style={{ width: "25px" }} />
+                  <img src="images/rt.png" style={{ width: "25px" }} alt="RT" />
                   {props.rtNb}
                 </CardText>
               </Col>

@@ -39,11 +39,7 @@ class App extends Component {
     fetch(`https://safe-savannah-17783.herokuapp.com/?tag=${hashtag}`)
       .then(results => results.json()) // conversion du résultat en JSON
       .then(data => {
-        this.setState({
-          posts: tweetToPost(data),
-          isTweetPageDisplayed: true
-        });
-        console.log(tweetToPost(data));
+        this.setState({ posts: tweetToPost(data), isTweetPageDisplayed: true });
       });
   };
 
@@ -88,21 +84,18 @@ class App extends Component {
           </Container>
         ) : (
           <Container fluid className="tweet" style={{ height: "100vh" }}>
-            <Row>
-              <Col xs="8" style={{ color: "white" }}>
-                <h1 className="mt-3" id="titleHashtag">
-                  #{this.state.title}
-                </h1>
-              </Col>
-              <Col xs="4" className="w-15 pb-3 text-right">
-                <Button
-                  className="mt-3"
-                  onClick={this.handleClickNewButton}
-                  color="primary"
-                >
-                  <p className="textButton ">#New</p>
-                </Button>
-              </Col>
+            <Row id="wallHeader" style={{ color: "white" }}>
+              <Button color="primary">
+                <p className="textButton ">#Tops</p>
+              </Button>
+
+              <h1 id="titleHashtag" className="mt-2">
+                #{this.state.title}
+              </h1>
+
+              <Button onClick={this.handleClickNewButton} color="primary">
+                <p className="textButton ">#New</p>
+              </Button>
             </Row>
             <CardColumns>
               {this.state.posts.map(post => (

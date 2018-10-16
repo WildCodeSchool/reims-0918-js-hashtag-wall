@@ -4,5 +4,16 @@
 .textButton {
   text-align: center;
   font-size: 25px;
-  max-height: 25px;
+  max-height: 21px;
+}
+
+#wallHeader {
+  display: flex;
+  justify-content: space-between;
+  margin: 5px;
+}
+
+#titleHashtag {
+  font-size: 50px;
+  font-weight: bold;
 }
