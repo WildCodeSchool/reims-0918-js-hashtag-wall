@@ -37,6 +37,7 @@ const TweetCard = props => {
               className="w-100"
               src={props.picture}
               style={{ "max-height": "450px" }}
+              alt="tweet"
             />
           )}
 

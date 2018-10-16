@@ -5,7 +5,19 @@ import HashtagInput from "./HashtagInput";
 import Footer from "./Footer";
 import Header from "./Header";
 import TweetCard from "./TweetCard";
-import { Container, Row, Col, CardColumns, Button } from "reactstrap";
+import classnames from "classnames";
+import {
+  Container,
+  Row,
+  Col,
+  CardColumns,
+  Button,
+  TabContent,
+  TabPane,
+  Nav,
+  NavItem,
+  NavLink
+} from "reactstrap";
 
 const tweetToPost = tweets => {
   return tweets.statuses.map(tweet => {
@@ -30,9 +42,11 @@ class App extends Component {
     this.state = {
       posts: [],
       title: "",
-      isTweetPageDisplayed: false
+      isTweetPageDisplayed: false,
+      activeTab: "1"
     };
     this.handleClickNewButton = this.handleClickNewButton.bind(this);
+    this.toggle = this.toggle.bind(this);
   }
 
   getTweet = hashtag => {
@@ -55,6 +69,14 @@ class App extends Component {
       )
     });
   };
+
+  toggle(tab) {
+    if (this.state.activeTab !== tab) {
+      this.setState({
+        activeTab: tab
+      });
+    }
+  }
 
   render() {
     return (
@@ -85,9 +107,9 @@ class App extends Component {
         ) : (
           <Container fluid className="tweet" style={{ height: "100vh" }}>
             <Row id="wallHeader" style={{ color: "white" }}>
-              <Button color="primary">
+              {/* <Button color="primary">
                 <p className="textButton ">#Tops</p>
-              </Button>
+              </Button> */}
 
               <h1 id="titleHashtag" className="mt-2">
                 #{this.state.title}
@@ -97,11 +119,44 @@ class App extends Component {
                 <p className="textButton ">#New</p>
               </Button>
             </Row>
-            <CardColumns>
-              {this.state.posts.map(post => (
-                <TweetCard {...post} />
-              ))}
-            </CardColumns>
+            <Nav tabs>
+              <NavItem>
+                <NavLink
+                  className={classnames({
+                    active: this.state.activeTab === "1"
+                  })}
+                  onClick={() => {
+                    this.toggle("1");
+                  }}
+                >
+                  Tweets
+                </NavLink>
+              </NavItem>
+              <NavItem>
+                <NavLink
+                  className={classnames({
+                    active: this.state.activeTab === "2"
+                  })}
+                  onClick={() => {
+                    this.toggle("2");
+                  }}
+                >
+                  Top tweets
+                </NavLink>
+              </NavItem>
+            </Nav>
+            <TabContent activeTab={this.state.activeTab}>
+              <TabPane tabId="1">
+                <CardColumns>
+                  {this.state.posts.map(post => (
+                    <TweetCard {...post} />
+                  ))}
+                </CardColumns>
+              </TabPane>
+              <TabPane tabId="2">
+                <h3>Filtre top tweets</h3>
+              </TabPane>
+            </TabContent>
           </Container>
         )}
       </div>
