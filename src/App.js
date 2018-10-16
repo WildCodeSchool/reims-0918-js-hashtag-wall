@@ -40,7 +40,7 @@ class App extends Component {
       });
   };
 
-  handleTitleChange = event => {
+  handleInputContent = event => {
     this.setState({
       title: event.target.value.replace(
         /[^A-Za-z0-9\u00E8\u00E9\u00EA\u00EB\u00E0\u00E1\u00E2\u00E3\u00E4\u00EF\u00EE\u00FB\u00FC\u00F4\u00F6]/gi,
@@ -61,7 +61,7 @@ class App extends Component {
             <Col sm="6" className="mt-5">
               <HashtagInput
                 title={this.state.title}
-                onTitleChange={this.handleTitleChange}
+                onInputContent={this.handleInputContent}
                 getTweet={this.getTweet}
               />
             </Col>

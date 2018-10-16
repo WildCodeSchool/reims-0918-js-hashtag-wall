@@ -11,7 +11,7 @@ const HashtagInput = props => {
           className="sizeInput"
           value={props.title}
           placeholder="Your Tag !"
-          onChange={props.onTitleChange}
+          onChange={props.onInputContent}
           type="text"
         />
       </InputGroup>
