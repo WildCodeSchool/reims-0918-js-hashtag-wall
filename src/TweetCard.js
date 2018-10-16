@@ -17,7 +17,11 @@ const TweetCard = tweet => {
           <CardBody className="pt-2 pb-0">
             <Row>
               <CardTitle className="w-100">
-                <img className="float-left mr-2" src={tweet.logo} />
+                <img
+                  className="float-left mr-2"
+                  src={tweet.logo}
+                  style={{ "border-radius": "25px" }}
+                />
                 <div className="pt-2">
                   {tweet.author}
                   <br />
@@ -27,17 +31,18 @@ const TweetCard = tweet => {
             </Row>
           </CardBody>
 
-          {tweet.picture !== "N/A" &&
-            tweet.picture !== ".." && (
-              <img className="w-100" src={tweet.picture} />
-            )}
+          {tweet.picture !== "N/A" && (
+            <img
+              className="w-100"
+              src={tweet.picture}
+              style={{ "max-height": "450px" }}
+            />
+          )}
 
           <CardBody className="pb-2">
             <Row>
               <Col xs="12">
-                <CardText className="pb-2 text-justify">
-                  {tweet.message}
-                </CardText>
+                <CardText className="pb-2">{tweet.message}</CardText>
               </Col>
               <Col xs="6">
                 <CardText className="text-center">

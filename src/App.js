@@ -7,6 +7,23 @@ import Header from "./Header";
 import TweetCard from "./TweetCard";
 import { Container, Row, Col, CardColumns } from "reactstrap";
 
+const tweetToPost = tweets => {
+  return tweets.statuses.map(tweet => {
+    const pictureMedia = tweet.entities.media
+      ? tweet.entities.media[0].media_url
+      : "N/A";
+    return {
+      picture: pictureMedia,
+      message: tweet.full_text,
+      author: tweet.user.name,
+      logo: tweet.user.profile_image_url,
+      likeNb: tweet.favorite_count,
+      rtNb: tweet.retweet_count,
+      id: `@${tweet.user.screen_name}`
+    };
+  });
+};
+
 class App extends Component {
   constructor(props) {
     super(props);
@@ -15,32 +32,12 @@ class App extends Component {
     };
   }
 
-  getTweet(hashtag) {
+  getTweet = hashtag => {
     fetch(`https://safe-savannah-17783.herokuapp.com/?tag=${hashtag}`)
       .then(results => results.json()) // conversion du résultat en JSON
       .then(data => {
-        console.log(this.TweetToPost(data));
-        // Une fois les données récupérées, on va mettre à jour notre state avec les nouvelles données
-        // this.setState({
-        //   posts: data
-        // });
+        this.setState({ posts: tweetToPost(data) });
       });
-  }
-  TweetToPost = tweets => {
-    return tweets.statuses.map(tweet => {
-      const pictureMedia = tweet.entities.media
-        ? tweet.entities.media[0].media_url
-        : "..";
-      return {
-        picture: pictureMedia,
-        message: tweet.full_text,
-        author: tweet.user.name,
-        logo: tweet.user.profile_image_url,
-        likeNb: tweet.favorite_count,
-        rtNb: tweet.retweet_count,
-        id: `@${tweet.user.screen_name}`
-      };
-    });
   };
 
   handleTitleChange = event => {
