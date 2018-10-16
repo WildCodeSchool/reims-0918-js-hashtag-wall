@@ -33,23 +33,22 @@ class App extends Component {
       isTweetPageDisplayed: false
     };
     this.handleClickNewButton = this.handleClickNewButton.bind(this);
-    this.handleClickStartButton = this.handleClickStartButton.bind(this);
   }
 
   getTweet = hashtag => {
     fetch(`https://safe-savannah-17783.herokuapp.com/?tag=${hashtag}`)
       .then(results => results.json()) // conversion du résultat en JSON
       .then(data => {
-        this.setState({ posts: tweetToPost(data) });
+        this.setState({
+          posts: tweetToPost(data),
+          isTweetPageDisplayed: true
+        });
+        console.log(tweetToPost(data));
       });
   };
 
   handleClickNewButton() {
     this.setState({ isTweetPageDisplayed: false });
-  }
-
-  handleClickStartButton() {
-    this.setState({ isTweetPageDisplayed: true });
   }
 
   handleInputContent = event => {
@@ -63,7 +62,7 @@ class App extends Component {
 
   render() {
     return (
-      <div className="App prout">
+      <div>
         {!this.state.isTweetPageDisplayed ? (
           <Container fluid style={{ height: "100vh" }}>
             <Row className="justify-content-center">
@@ -76,7 +75,6 @@ class App extends Component {
                   title={this.state.title}
                   onInputContent={this.handleInputContent}
                   getTweet={this.getTweet}
-                  tweetPageOnClick={this.handleClickStartButton}
                 />
               </Col>
             </Row>
