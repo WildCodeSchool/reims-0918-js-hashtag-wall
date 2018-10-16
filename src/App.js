@@ -5,7 +5,7 @@ import HashtagInput from "./HashtagInput";
 import Footer from "./Footer";
 import Header from "./Header";
 import TweetCard from "./TweetCard";
-import { Container, Row, Col, CardColumns } from "reactstrap";
+import { Container, Row, Col, CardColumns, Button } from "reactstrap";
 
 const tweetToPost = tweets => {
   return tweets.statuses.map(tweet => {
@@ -77,12 +77,16 @@ class App extends Component {
         <Container fluid className="tweet mt-5" style={{ height: "100vh" }}>
           <Row>
             <Col
-              xs="12"
-              className="text-center mt-5 mb-4"
+              xs="8"
               style={{ color: "white" }}
             >
               <h1 id="titleHashtag">#{this.state.title}</h1>
             </Col>
+            <Col xs="4" className="w-15 pb-3 text-right" >
+              <Button color="primary" >
+                <p className="textButton">#New</p>
+              </Button>      
+            </Col> 
           </Row>
           <CardColumns>
             {this.state.posts.map(post => (
