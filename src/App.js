@@ -47,6 +47,12 @@ class App extends Component {
     this.setState({ isTweetPageDisplayed: false });
   }
 
+  handleXClick = event => {
+    this.setState({
+      title: event.target.value.replace(/""/)
+    });
+  };
+
   handleInputContent = event => {
     this.setState({
       title: event.target.value.replace(
@@ -71,6 +77,7 @@ class App extends Component {
                   title={this.state.title}
                   onInputContent={this.handleInputContent}
                   getTweet={this.getTweet}
+                  onXClick={this.handleXClick}
                 />
               </Col>
             </Row>
