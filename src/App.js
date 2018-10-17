@@ -11,6 +11,8 @@ import {
   Row,
   Col,
   CardColumns,
+  Card,
+  CardDeck,
   Button,
   TabContent,
   TabPane,
@@ -41,6 +43,7 @@ class App extends Component {
     super(props);
     this.state = {
       posts: [],
+      postlike: [],
       title: "",
       isTweetPageDisplayed: false,
       activeTab: "1"
@@ -53,7 +56,11 @@ class App extends Component {
     fetch(`https://safe-savannah-17783.herokuapp.com/?tag=${hashtag}`)
       .then(results => results.json()) // conversion du résultat en JSON
       .then(data => {
-        this.setState({ posts: tweetToPost(data), isTweetPageDisplayed: true });
+        this.setState({
+          posts: tweetToPost(data),
+          postlike: tweetToPost(data),
+          isTweetPageDisplayed: true
+        });
       });
   };
 
@@ -107,10 +114,6 @@ class App extends Component {
         ) : (
           <Container fluid className="tweet" style={{ height: "100vh" }}>
             <Row id="wallHeader" style={{ color: "white" }}>
-              {/* <Button color="primary">
-                <p className="textButton ">#Tops</p>
-              </Button> */}
-
               <h1 id="titleHashtag" className="mt-2">
                 #{this.state.title}
               </h1>
@@ -119,7 +122,7 @@ class App extends Component {
                 <p className="textButton ">#New</p>
               </Button>
             </Row>
-            <Nav tabs>
+            <Nav tabs className="navlabs d-flex justify-content-center">
               <NavItem>
                 <NavLink
                   className={classnames({
@@ -154,7 +157,19 @@ class App extends Component {
                 </CardColumns>
               </TabPane>
               <TabPane tabId="2">
-                <h3>Filtre top tweets</h3>
+                <Row>
+                  <Col xs={{ size: 6, offset: 3 }}>
+                    {/* <CardDeck style={{ width: "50rem" }}> */}
+                    {this.state.postlike
+                      .sort(function(a, b) {
+                        return a.likeNb - b.likeNb;
+                      })
+                      .reverse()
+                      .map(postTopTweet => <TweetCard {...postTopTweet} />)
+                      .slice(0, 10)}
+                    {/* </CardDeck> */}
+                  </Col>
+                </Row>
               </TabPane>
             </TabContent>
           </Container>

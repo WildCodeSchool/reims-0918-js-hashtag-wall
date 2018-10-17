@@ -13,7 +13,7 @@ const TweetCard = props => {
   return (
     <div>
       <Container fluid className="p-0">
-        <Card style={{ maxheight: "100px" }}>
+        <Card style={{ maxheight: "100px" }} className="mb-3">
           <CardBody className="pt-2 pb-0">
             <Row>
               <CardTitle className="w-100">
