@@ -17,3 +17,11 @@
   font-size: 50px;
   font-weight: bold;
 }
+
+.filterTweet {
+  margin-bottom: 3px;
+}
+
+.navTabs {
+  border-bottom: none !important;
+}

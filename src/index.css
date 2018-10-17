@@ -4,6 +4,7 @@ body {
   color: #fff;
   background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
   background-size: 800%;
+  background-attachment: fixed;
   -webkit-animation: Gradient 60s ease infinite;
   -moz-animation: Gradient 60s ease infinite;
   animation: Gradient 60s ease infinite;
@@ -22,12 +23,11 @@ body {
 }
 
 .btn-primary {
-  background-color: rgba(41, 41, 53, 0.4)!important;
-  border: 2px solid white!important;
-
+  background-color: rgba(41, 41, 53, 0.4) !important;
+  border: 2px solid white !important;
 }
 
 .btn-primary:hover {
- background-color: rgba(41, 41, 53, 0)!important;
- border: 2px solid white!important;
+  background-color: rgba(41, 41, 53, 0) !important;
+  border: 2px solid white !important;
 }
