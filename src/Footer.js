@@ -3,7 +3,7 @@ import "./Footer.css";
 import { Container, Row, Col } from "reactstrap";
 
 const Footer = () => (
-  <Container-fluid>
+  <Container fluid>
     <Row className="background positionFooter w-100">
       <Col sm="6">
         <img className="img" src="images/logo_wall_white.png" alt="logo_wall" />
@@ -13,7 +13,7 @@ const Footer = () => (
         Corentin - Leuthsouline
       </Col>
     </Row>
-  </Container-fluid>
+  </Container>
 );
 
 export default Footer;
