@@ -11,8 +11,6 @@ import {
   Row,
   Col,
   CardColumns,
-  Card,
-  CardDeck,
   Button,
   TabContent,
   TabPane,
@@ -122,7 +120,7 @@ class App extends Component {
                 <p className="textButton ">#New</p>
               </Button>
             </Row>
-            <Nav tabs className="navlabs d-flex justify-content-center">
+            <Nav tabs className="navTabs d-flex justify-content-center">
               <NavItem>
                 <NavLink
                   className={classnames({
@@ -157,8 +155,8 @@ class App extends Component {
                 </CardColumns>
               </TabPane>
               <TabPane tabId="2">
-                <Row>
-                  <Col xs={{ size: 6, offset: 3 }}>
+                <Row className="justify-content-center">
+                  <Col xs={{ size: 4 }}>
                     {/* <CardDeck style={{ width: "50rem" }}> */}
                     {this.state.postlike
                       .sort(function(a, b) {
