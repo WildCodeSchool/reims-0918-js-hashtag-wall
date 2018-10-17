@@ -14,6 +14,11 @@ const HashtagInput = props => {
           onChange={props.onInputContent}
           type="text"
         />
+        <InputGroupAddon addonType="append">
+          <Button color="primary" onClick={props.onXClick}>
+            X
+          </Button>
+        </InputGroupAddon>
       </InputGroup>
       <div className="buttonPosition">
         <Button
