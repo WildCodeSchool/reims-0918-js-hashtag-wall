@@ -6,6 +6,7 @@ import Footer from "./Footer";
 import Header from "./Header";
 import TweetCard from "./TweetCard";
 import { Container, Row, Col, CardColumns, Button } from "reactstrap";
+import Loading from "./Loading";
 
 const tweetToPost = tweets => {
   return tweets.statuses.map(tweet => {
@@ -30,7 +31,8 @@ class App extends Component {
     this.state = {
       posts: [],
       title: "",
-      isTweetPageDisplayed: false
+      isTweetPageDisplayed: false,
+      isLoading: false
     };
     this.handleClickNewButton = this.handleClickNewButton.bind(this);
   }
@@ -39,7 +41,11 @@ class App extends Component {
     fetch(`https://safe-savannah-17783.herokuapp.com/?tag=${hashtag}`)
       .then(results => results.json()) // conversion du résultat en JSON
       .then(data => {
-        this.setState({ posts: tweetToPost(data), isTweetPageDisplayed: true });
+        this.setState({
+          posts: tweetToPost(data),
+          isTweetPageDisplayed: true,
+          isLoading: true
+        });
       });
   };
 
@@ -59,7 +65,7 @@ class App extends Component {
   render() {
     return (
       <div>
-        {!this.state.isTweetPageDisplayed ? (
+        {!this.state.isTweetPageDisplayed && !this.state.isLoading ? (
           <Container fluid style={{ height: "100vh" }}>
             <Row className="justify-content-center">
               <Header />
@@ -72,6 +78,7 @@ class App extends Component {
                   onInputContent={this.handleInputContent}
                   getTweet={this.getTweet}
                 />
+                <Loading />
               </Col>
             </Row>
 
