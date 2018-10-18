@@ -63,7 +63,7 @@ class App extends Component {
   };
 
   handleClickNewButton() {
-    this.setState({ isTweetPageDisplayed: false });
+    this.setState({ isTweetPageDisplayed: false, title: "" });
   }
 
   handleXClick = event => {
