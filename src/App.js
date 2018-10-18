@@ -162,7 +162,6 @@ class App extends Component {
               <TabPane tabId="2">
                 <Row className="justify-content-center">
                   <Col xs={{ size: 4 }}>
-                    {/* <CardDeck style={{ width: "50rem" }}> */}
                     {this.state.postlike
                       .sort(function(a, b) {
                         return a.likeNb - b.likeNb;
@@ -170,7 +169,6 @@ class App extends Component {
                       .reverse()
                       .map(postTopTweet => <TweetCard {...postTopTweet} />)
                       .slice(0, 10)}
-                    {/* </CardDeck> */}
                   </Col>
                 </Row>
               </TabPane>
