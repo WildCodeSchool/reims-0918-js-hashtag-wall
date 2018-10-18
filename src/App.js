@@ -42,6 +42,7 @@ class App extends Component {
     this.state = {
       posts: [],
       postlike: [],
+      postPics: [],
       title: "",
       isTweetPageDisplayed: false,
       isLoading: false,
@@ -60,9 +61,10 @@ class App extends Component {
       .then(data => {
         this.setState({
           posts: tweetToPost(data),
+          postlike: tweetToPost(data),
+          postPics: tweetToPost(data),
           isTweetPageDisplayed: true,
-          isLoading: false,
-          postlike: tweetToPost(data)
+          isLoading: false
         });
         console.log(this.state.posts);
       });
@@ -135,7 +137,7 @@ class App extends Component {
             <Nav tabs className="navTabs d-flex justify-content-center">
               <NavItem>
                 <NavLink
-                  className={classnames({
+                  className={classnames("navlink", {
                     active: this.state.activeTab === "1"
                   })}
                   onClick={() => {
@@ -147,7 +149,7 @@ class App extends Component {
               </NavItem>
               <NavItem>
                 <NavLink
-                  className={classnames({
+                  className={classnames("navlink", {
                     active: this.state.activeTab === "2"
                   })}
                   onClick={() => {
@@ -155,6 +157,18 @@ class App extends Component {
                   }}
                 >
                   Top tweets
+                </NavLink>
+              </NavItem>
+              <NavItem>
+                <NavLink
+                  className={classnames("navlink", {
+                    active: this.state.activeTab === "3"
+                  })}
+                  onClick={() => {
+                    this.toggle("3");
+                  }}
+                >
+                  Photos
                 </NavLink>
               </NavItem>
             </Nav>
@@ -178,6 +192,22 @@ class App extends Component {
                       .slice(0, 10)}
                   </Col>
                 </Row>
+              </TabPane>
+              <TabPane tabId="3">
+                <CardColumns>
+                  {this.state.postPics.map(
+                    postPicsTweet =>
+                      postPicsTweet.picture !== "N/A" && (
+                        <TweetCard
+                          picture={postPicsTweet.picture}
+                          author={postPicsTweet.author}
+                          logo={postPicsTweet.logo}
+                          likeNb={postPicsTweet.likeNb}
+                          rtNb={postPicsTweet.rtNb}
+                        />
+                      )
+                  )}
+                </CardColumns>
               </TabPane>
             </TabContent>
           </Container>
