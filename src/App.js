@@ -42,8 +42,10 @@ class App extends Component {
     this.state = {
       posts: [],
       postlike: [],
+      postPics: [],
       title: "",
       isTweetPageDisplayed: false,
+      isLoading: false,
       activeTab: "1"
     };
     this.handleClickNewButton = this.handleClickNewButton.bind(this);
@@ -51,19 +53,25 @@ class App extends Component {
   }
 
   getTweet = hashtag => {
+    this.setState({
+      isLoading: true
+    });
     fetch(`https://safe-savannah-17783.herokuapp.com/?tag=${hashtag}`)
       .then(results => results.json()) // conversion du résultat en JSON
       .then(data => {
         this.setState({
           posts: tweetToPost(data),
           postlike: tweetToPost(data),
-          isTweetPageDisplayed: true
+          postPics: tweetToPost(data),
+          isTweetPageDisplayed: true,
+          isLoading: false
         });
+        console.log(this.state.posts);
       });
   };
 
   handleClickNewButton() {
-    this.setState({ isTweetPageDisplayed: false });
+    this.setState({ isTweetPageDisplayed: false, title: "" });
   }
 
   handleXClick = event => {
@@ -104,6 +112,7 @@ class App extends Component {
                   onInputContent={this.handleInputContent}
                   getTweet={this.getTweet}
                   onXClick={this.handleXClick}
+                  startLoad={this.state.isLoading}
                 />
               </Col>
             </Row>
@@ -128,7 +137,7 @@ class App extends Component {
             <Nav tabs className="navTabs d-flex justify-content-center">
               <NavItem>
                 <NavLink
-                  className={classnames({
+                  className={classnames("navlink", {
                     active: this.state.activeTab === "1"
                   })}
                   onClick={() => {
@@ -140,7 +149,7 @@ class App extends Component {
               </NavItem>
               <NavItem>
                 <NavLink
-                  className={classnames({
+                  className={classnames("navlink", {
                     active: this.state.activeTab === "2"
                   })}
                   onClick={() => {
@@ -148,6 +157,18 @@ class App extends Component {
                   }}
                 >
                   Top tweets
+                </NavLink>
+              </NavItem>
+              <NavItem>
+                <NavLink
+                  className={classnames("navlink", {
+                    active: this.state.activeTab === "3"
+                  })}
+                  onClick={() => {
+                    this.toggle("3");
+                  }}
+                >
+                  Photos
                 </NavLink>
               </NavItem>
             </Nav>
@@ -171,6 +192,22 @@ class App extends Component {
                       .slice(0, 10)}
                   </Col>
                 </Row>
+              </TabPane>
+              <TabPane tabId="3">
+                <CardColumns>
+                  {this.state.postPics.map(
+                    postPicsTweet =>
+                      postPicsTweet.picture !== "N/A" && (
+                        <TweetCard
+                          picture={postPicsTweet.picture}
+                          author={postPicsTweet.author}
+                          logo={postPicsTweet.logo}
+                          likeNb={postPicsTweet.likeNb}
+                          rtNb={postPicsTweet.rtNb}
+                        />
+                      )
+                  )}
+                </CardColumns>
               </TabPane>
             </TabContent>
           </Container>

@@ -34,3 +34,7 @@
 .hashtagRow {
   margin-top: 15vh;
 }
+
+.navlink {
+  border-radius: 0.25rem;
+}
