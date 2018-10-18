@@ -42,6 +42,7 @@ class App extends Component {
     this.state = {
       posts: [],
       postlike: [],
+      postPics: [],
       title: "",
       isTweetPageDisplayed: false,
       activeTab: "1"
@@ -57,6 +58,7 @@ class App extends Component {
         this.setState({
           posts: tweetToPost(data),
           postlike: tweetToPost(data),
+          postPics: tweetToPost(data),
           isTweetPageDisplayed: true
         });
       });
@@ -150,6 +152,18 @@ class App extends Component {
                   Top tweets
                 </NavLink>
               </NavItem>
+              <NavItem>
+                <NavLink
+                  className={classnames({
+                    active: this.state.activeTab === "3"
+                  })}
+                  onClick={() => {
+                    this.toggle("3");
+                  }}
+                >
+                  Photos
+                </NavLink>
+              </NavItem>
             </Nav>
             <TabContent activeTab={this.state.activeTab}>
               <TabPane tabId="1">
@@ -162,7 +176,6 @@ class App extends Component {
               <TabPane tabId="2">
                 <Row className="justify-content-center">
                   <Col xs={{ size: 4 }}>
-                    {/* <CardDeck style={{ width: "50rem" }}> */}
                     {this.state.postlike
                       .sort(function(a, b) {
                         return a.likeNb - b.likeNb;
@@ -170,9 +183,24 @@ class App extends Component {
                       .reverse()
                       .map(postTopTweet => <TweetCard {...postTopTweet} />)
                       .slice(0, 10)}
-                    {/* </CardDeck> */}
                   </Col>
                 </Row>
+              </TabPane>
+              <TabPane tabId="3">
+                <CardColumns>
+                  {this.state.postPics.map(
+                    postPicsTweet =>
+                      postPicsTweet.picture !== "N/A" && (
+                        <TweetCard
+                          picture={postPicsTweet.picture}
+                          author={postPicsTweet.author}
+                          logo={postPicsTweet.logo}
+                          likeNb={postPicsTweet.likeNb}
+                          rtNb={postPicsTweet.rtNb}
+                        />
+                      )
+                  )}
+                </CardColumns>
               </TabPane>
             </TabContent>
           </Container>
