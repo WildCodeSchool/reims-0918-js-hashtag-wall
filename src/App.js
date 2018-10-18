@@ -45,6 +45,7 @@ class App extends Component {
       postPics: [],
       title: "",
       isTweetPageDisplayed: false,
+      isLoading: false,
       activeTab: "1"
     };
     this.handleClickNewButton = this.handleClickNewButton.bind(this);
@@ -52,6 +53,9 @@ class App extends Component {
   }
 
   getTweet = hashtag => {
+    this.setState({
+      isLoading: true
+    });
     fetch(`https://safe-savannah-17783.herokuapp.com/?tag=${hashtag}`)
       .then(results => results.json()) // conversion du résultat en JSON
       .then(data => {
@@ -59,13 +63,15 @@ class App extends Component {
           posts: tweetToPost(data),
           postlike: tweetToPost(data),
           postPics: tweetToPost(data),
-          isTweetPageDisplayed: true
+          isTweetPageDisplayed: true,
+          isLoading: false
         });
+        console.log(this.state.posts);
       });
   };
 
   handleClickNewButton() {
-    this.setState({ isTweetPageDisplayed: false });
+    this.setState({ isTweetPageDisplayed: false, title: "" });
   }
 
   handleXClick = event => {
@@ -106,6 +112,7 @@ class App extends Component {
                   onInputContent={this.handleInputContent}
                   getTweet={this.getTweet}
                   onXClick={this.handleXClick}
+                  startLoad={this.state.isLoading}
                 />
               </Col>
             </Row>
