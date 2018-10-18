@@ -13,7 +13,7 @@ const TweetCard = props => {
   return (
     <div>
       <Container fluid className="p-0">
-        <Card style={{ maxheight: "100px" }}>
+        <Card style={{ maxheight: "100px" }} className="mt-1">
           <CardBody className="pt-2 pb-0">
             <Row>
               <CardTitle className="w-100">
@@ -36,7 +36,8 @@ const TweetCard = props => {
             <img
               className="w-100"
               src={props.picture}
-              style={{ "max-height": "450px" }}
+              style={{ "max-height": "650px" }}
+              alt="tweet"
             />
           )}
 

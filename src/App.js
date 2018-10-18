@@ -5,8 +5,19 @@ import HashtagInput from "./HashtagInput";
 import Footer from "./Footer";
 import Header from "./Header";
 import TweetCard from "./TweetCard";
-import { Container, Row, Col, CardColumns, Button } from "reactstrap";
-import Loading from "./Loading";
+import classnames from "classnames";
+import {
+  Container,
+  Row,
+  Col,
+  CardColumns,
+  Button,
+  TabContent,
+  TabPane,
+  Nav,
+  NavItem,
+  NavLink
+} from "reactstrap";
 
 const tweetToPost = tweets => {
   return tweets.statuses.map(tweet => {
@@ -30,28 +41,42 @@ class App extends Component {
     super(props);
     this.state = {
       posts: [],
+      postlike: [],
       title: "",
       isTweetPageDisplayed: false,
-      isLoading: false
+      isLoading: false,
+      activeTab: "1"
     };
     this.handleClickNewButton = this.handleClickNewButton.bind(this);
+    this.toggle = this.toggle.bind(this);
   }
 
   getTweet = hashtag => {
+    this.setState({
+      isLoading: true
+    });
     fetch(`https://safe-savannah-17783.herokuapp.com/?tag=${hashtag}`)
       .then(results => results.json()) // conversion du résultat en JSON
       .then(data => {
         this.setState({
           posts: tweetToPost(data),
           isTweetPageDisplayed: true,
-          isLoading: true
+          isLoading: false,
+          postlike: tweetToPost(data)
         });
+        console.log(this.state.posts);
       });
   };
 
   handleClickNewButton() {
     this.setState({ isTweetPageDisplayed: false });
   }
+
+  handleXClick = event => {
+    this.setState({
+      title: event.target.value.replace(/""/)
+    });
+  };
 
   handleInputContent = event => {
     this.setState({
@@ -62,10 +87,18 @@ class App extends Component {
     });
   };
 
+  toggle(tab) {
+    if (this.state.activeTab !== tab) {
+      this.setState({
+        activeTab: tab
+      });
+    }
+  }
+
   render() {
     return (
       <div>
-        {!this.state.isTweetPageDisplayed && !this.state.isLoading ? (
+        {!this.state.isTweetPageDisplayed ? (
           <Container fluid style={{ height: "100vh" }}>
             <Row className="justify-content-center">
               <Header />
@@ -77,8 +110,9 @@ class App extends Component {
                   title={this.state.title}
                   onInputContent={this.handleInputContent}
                   getTweet={this.getTweet}
+                  onXClick={this.handleXClick}
+                  startLoad={this.state.isLoading}
                 />
-                <Loading />
               </Col>
             </Row>
 
@@ -92,10 +126,6 @@ class App extends Component {
         ) : (
           <Container fluid className="tweet" style={{ height: "100vh" }}>
             <Row id="wallHeader" style={{ color: "white" }}>
-              <Button color="primary">
-                <p className="textButton ">#Tops</p>
-              </Button>
-
               <h1 id="titleHashtag" className="mt-2">
                 #{this.state.title}
               </h1>
@@ -104,11 +134,54 @@ class App extends Component {
                 <p className="textButton ">#New</p>
               </Button>
             </Row>
-            <CardColumns>
-              {this.state.posts.map(post => (
-                <TweetCard {...post} />
-              ))}
-            </CardColumns>
+            <Nav tabs className="navTabs d-flex justify-content-center">
+              <NavItem>
+                <NavLink
+                  className={classnames({
+                    active: this.state.activeTab === "1"
+                  })}
+                  onClick={() => {
+                    this.toggle("1");
+                  }}
+                >
+                  Tweets
+                </NavLink>
+              </NavItem>
+              <NavItem>
+                <NavLink
+                  className={classnames({
+                    active: this.state.activeTab === "2"
+                  })}
+                  onClick={() => {
+                    this.toggle("2");
+                  }}
+                >
+                  Top tweets
+                </NavLink>
+              </NavItem>
+            </Nav>
+            <TabContent activeTab={this.state.activeTab}>
+              <TabPane tabId="1">
+                <CardColumns>
+                  {this.state.posts.map(post => (
+                    <TweetCard {...post} />
+                  ))}
+                </CardColumns>
+              </TabPane>
+              <TabPane tabId="2">
+                <Row className="justify-content-center">
+                  <Col xs={{ size: 4 }}>
+                    {this.state.postlike
+                      .sort(function(a, b) {
+                        return a.likeNb - b.likeNb;
+                      })
+                      .reverse()
+                      .map(postTopTweet => <TweetCard {...postTopTweet} />)
+                      .slice(0, 10)}
+                  </Col>
+                </Row>
+              </TabPane>
+            </TabContent>
           </Container>
         )}
       </div>
