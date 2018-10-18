@@ -25,3 +25,12 @@
 .navTabs {
   border-bottom: none !important;
 }
+
+.footerPosition {
+  position: absolute;
+  bottom: 0;
+}
+
+.hashtagRow {
+  margin-top: 15vh;
+}
