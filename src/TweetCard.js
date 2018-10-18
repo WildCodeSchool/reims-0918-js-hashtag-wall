@@ -23,10 +23,16 @@ const TweetCard = props => {
                   alt="avatar"
                   style={{ "border-radius": "25px" }}
                 />
+                <span
+                  className="mr-2 mt-2"
+                  style={{ "font-size": "15px", float: "right" }}
+                >
+                  {props.date}
+                </span>
                 <div className="pt-2">
                   {props.author}
                   <br />
-                  <span style={{ "font-size": "15px" }}>{props.id}</span>
+                  <span style={{ "font-size": "15px" }}>{props.userName}</span>
                 </div>
               </CardTitle>
             </Row>
