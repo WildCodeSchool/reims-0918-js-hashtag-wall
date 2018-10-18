@@ -97,9 +97,8 @@ class App extends Component {
             <Row className="justify-content-center">
               <Header />
             </Row>
-
-            <Row className="justify-content-center mt-5">
-              <Col sm="6" className="mt-5">
+            <Row className="justify-content-center hashtagRow">
+              <Col sm="6">
                 <HashtagInput
                   title={this.state.title}
                   onInputContent={this.handleInputContent}
@@ -109,10 +108,9 @@ class App extends Component {
               </Col>
             </Row>
 
-            <Row>
-              <ModalHelp className="w-100" />
-            </Row>
-            <Row>
+            <Row className="footerPosition w-100">
+              <ModalHelp />
+
               <Footer />
             </Row>
           </Container>

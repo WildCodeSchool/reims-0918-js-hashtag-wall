@@ -4,7 +4,7 @@ import { Container, Row, Col } from "reactstrap";
 
 const Footer = () => (
   <Container fluid>
-    <Row className="background positionFooter w-100">
+    <Row className="background">
       <Col sm="6">
         <img className="img" src="images/logo_wall_white.png" alt="logo_wall" />
       </Col>
