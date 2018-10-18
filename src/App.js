@@ -44,6 +44,7 @@ class App extends Component {
       postlike: [],
       title: "",
       isTweetPageDisplayed: false,
+      isLoading: false,
       activeTab: "1"
     };
     this.handleClickNewButton = this.handleClickNewButton.bind(this);
@@ -51,14 +52,19 @@ class App extends Component {
   }
 
   getTweet = hashtag => {
+    this.setState({
+      isLoading: true
+    });
     fetch(`https://safe-savannah-17783.herokuapp.com/?tag=${hashtag}`)
       .then(results => results.json()) // conversion du résultat en JSON
       .then(data => {
         this.setState({
           posts: tweetToPost(data),
-          postlike: tweetToPost(data),
-          isTweetPageDisplayed: true
+          isTweetPageDisplayed: true,
+          isLoading: false,
+          postlike: tweetToPost(data)
         });
+        console.log(this.state.posts);
       });
   };
 
@@ -104,6 +110,7 @@ class App extends Component {
                   onInputContent={this.handleInputContent}
                   getTweet={this.getTweet}
                   onXClick={this.handleXClick}
+                  startLoad={this.state.isLoading}
                 />
               </Col>
             </Row>
@@ -162,7 +169,6 @@ class App extends Component {
               <TabPane tabId="2">
                 <Row className="justify-content-center">
                   <Col xs={{ size: 4 }}>
-                    {/* <CardDeck style={{ width: "50rem" }}> */}
                     {this.state.postlike
                       .sort(function(a, b) {
                         return a.likeNb - b.likeNb;
@@ -170,7 +176,6 @@ class App extends Component {
                       .reverse()
                       .map(postTopTweet => <TweetCard {...postTopTweet} />)
                       .slice(0, 10)}
-                    {/* </CardDeck> */}
                   </Col>
                 </Row>
               </TabPane>
