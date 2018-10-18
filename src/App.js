@@ -130,7 +130,7 @@ class App extends Component {
             <Nav tabs className="navTabs d-flex justify-content-center">
               <NavItem>
                 <NavLink
-                  className={classnames({
+                  className={classnames("navlink", {
                     active: this.state.activeTab === "1"
                   })}
                   onClick={() => {
@@ -142,7 +142,7 @@ class App extends Component {
               </NavItem>
               <NavItem>
                 <NavLink
-                  className={classnames({
+                  className={classnames("navlink", {
                     active: this.state.activeTab === "2"
                   })}
                   onClick={() => {
@@ -154,7 +154,7 @@ class App extends Component {
               </NavItem>
               <NavItem>
                 <NavLink
-                  className={classnames({
+                  className={classnames("navlink", {
                     active: this.state.activeTab === "3"
                   })}
                   onClick={() => {
