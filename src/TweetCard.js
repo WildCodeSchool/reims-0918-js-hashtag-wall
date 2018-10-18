@@ -32,7 +32,7 @@ const TweetCard = props => {
                 <div className="pt-2">
                   {props.author}
                   <br />
-                  <span style={{ "font-size": "15px" }}>{props.id}</span>
+                  <span style={{ "font-size": "15px" }}>{props.userName}</span>
                 </div>
               </CardTitle>
             </Row>

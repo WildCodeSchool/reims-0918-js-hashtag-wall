@@ -31,7 +31,7 @@ const tweetToPost = tweets => {
       logo: tweet.user.profile_image_url,
       likeNb: tweet.favorite_count,
       rtNb: tweet.retweet_count,
-      id: `@${tweet.user.screen_name}`,
+      userName: `@${tweet.user.screen_name}`,
       date: tweet.created_at
         .split(" ")
         .splice(0, 4)
