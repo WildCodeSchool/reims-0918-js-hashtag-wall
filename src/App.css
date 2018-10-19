@@ -38,3 +38,15 @@
 .navlink {
   border-radius: 0.25rem;
 }
+
+.buttonToTheTop {
+  height: 50px;
+  float: right;
+  margin-right: 30px;
+}
+
+.toTheTopLayout {
+  position: fixed;
+  width: 100%;
+  bottom: 10px;
+}

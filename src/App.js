@@ -179,9 +179,17 @@ class App extends Component {
                     <TweetCard {...post} />
                   ))}
                 </CardColumns>
+                <a className="toTheTopLayout" href="#titleHashtag">
+                  <img
+                    src="images/arrow-alt-circle-up-regular.svg"
+                    alt="toTheTopp"
+                    className="buttonToTheTop"
+                  />
+                </a>
               </TabPane>
               <TabPane tabId="2">
                 <Row className="justify-content-center">
+                  {/* <Col>Top 1</Col> */}
                   <Col xs={{ size: 4 }}>
                     {this.state.postlike
                       .sort(function(a, b) {
@@ -191,6 +199,20 @@ class App extends Component {
                       .map(postTopTweet => <TweetCard {...postTopTweet} />)
                       .slice(0, 10)}
                   </Col>
+                  <a className="toTheTopLayout" href="#titleHashtag">
+                    <img
+                      src="images/arrow-alt-circle-up-regular.svg"
+                      alt="toTheTopp"
+                      className="buttonToTheTop"
+                    />
+                  </a>
+                  {/* <Col xs={{ size: 4 }}>
+                    <h1>
+                      <span className="heart">❤</span>
+                      {this.state.postlike.map(justLikeNb => justLikeNb.likeNb)}
+                      ;
+                    </h1>
+                  </Col> */}
                 </Row>
               </TabPane>
               <TabPane tabId="3">
@@ -208,6 +230,13 @@ class App extends Component {
                       )
                   )}
                 </CardColumns>
+                <a className="toTheTopLayout" href="#titleHashtag">
+                  <img
+                    src="images/arrow-alt-circle-up-regular.svg"
+                    alt="toTheTopp"
+                    className="buttonToTheTop"
+                  />
+                </a>
               </TabPane>
             </TabContent>
           </Container>
