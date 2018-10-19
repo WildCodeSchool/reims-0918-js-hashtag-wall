@@ -120,7 +120,7 @@ class App extends Component {
                 />
               </Col>
             </Row>
-
+            <Row />
             <Row className="footerPosition w-100">
               <ModalHelp />
 
