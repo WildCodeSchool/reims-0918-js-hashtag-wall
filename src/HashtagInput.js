@@ -23,6 +23,10 @@ const HashtagInput = props => {
       </InputGroup>
       {!props.startLoad ? (
         <div className="buttonPosition">
+          <img
+            src="images/twitterwhite.png"
+            className="logotwitter mt-5 mr-3"
+          />
           <Button
             href="#titleHashtag"
             className="w-25 mt-5"
