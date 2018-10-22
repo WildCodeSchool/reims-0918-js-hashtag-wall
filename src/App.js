@@ -124,14 +124,19 @@ class App extends Component {
             </Row>
           </Container>
         ) : (
-          <Container fluid className="tweet" style={{ height: "100vh" }}>
+          <Container
+            fluid
+            className="tweet"
+            id="toTheTop"
+            style={{ height: "100vh" }}
+          >
             <Row id="wallHeader" style={{ color: "white" }}>
-              <h1 id="titleHashtag" className="mt-2">
+              <h1 className="mt-2" id="titleHashtag">
                 #{this.state.title}
               </h1>
 
               <Button onClick={this.handleClickNewButton} color="primary">
-                <p className="textButton ">#New</p>
+                <p className="textButton">#New</p>
               </Button>
             </Row>
             <Nav tabs className="navTabs d-flex justify-content-center">
@@ -230,7 +235,7 @@ class App extends Component {
                       )
                   )}
                 </CardColumns>
-                <a className="toTheTopLayout" href="#titleHashtag">
+                <a className="toTheTopLayout" href="#toTheTop">
                   <img
                     src="images/arrow-alt-circle-up-regular.svg"
                     alt="toTheTopp"
