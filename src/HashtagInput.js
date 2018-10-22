@@ -29,9 +29,11 @@ const HashtagInput = props => {
         {!props.startLoad ? (
           <div className="buttonPosition">
             <Button
+              id="startBtn"
               href="#titleHashtag"
               className="w-25 mt-5"
               color="primary"
+              disabled={props.title.length === 0}
               onClick={() => props.getTweet(props.title)}
             >
               <p className="buttonText">#Start</p>
