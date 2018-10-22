@@ -43,6 +43,14 @@
   height: 50px;
   float: right;
   margin-right: 30px;
+  opacity: 0.5;
+}
+
+.buttonToTheTop:hover {
+  height: 55px;
+  float: right;
+  margin-right: 30px;
+  opacity: 1;
 }
 
 .toTheTopLayout {
