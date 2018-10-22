@@ -16,11 +16,15 @@ const HashtagInput = props => {
             onChange={props.onInputContent}
             type="text"
           />
-          <InputGroupAddon addonType="append">
-            <Button color="primary" onClick={props.onXClick}>
-              X
-            </Button>
-          </InputGroupAddon>
+          {props.title.length > 0 ? (
+            <InputGroupAddon addonType="append">
+              <Button color="primary" onClick={props.onXClick}>
+                X
+              </Button>
+            </InputGroupAddon>
+          ) : (
+            ""
+          )}
         </InputGroup>
         {!props.startLoad ? (
           <div className="buttonPosition">
