@@ -7,15 +7,20 @@ const HashtagInput = props => {
   return (
     <div>
       <form>
-      <InputGroup size="lg">
-        <InputGroupAddon addonType="prepend">#</InputGroupAddon>
-        <Input
-          className="sizeInput"
-          value={props.title}
-          placeholder="Your Tag !"
-          onChange={props.onInputContent}
-          type="text"
-        />
+        <InputGroup size="lg">
+          <InputGroupAddon addonType="prepend">#</InputGroupAddon>
+          <Input
+            className="sizeInput"
+            value={props.title}
+            placeholder="Your Tag !"
+            onChange={props.onInputContent}
+            type="text"
+            onKeyPress={event => {
+              if (event.key === "Enter") {
+                props.getTweet(props.title);
+              }
+            }}
+          />
           {props.title.length > 0 ? (
             <InputGroupAddon addonType="append">
               <Button color="primary" onClick={props.onXClick}>
