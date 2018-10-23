@@ -120,7 +120,7 @@ class App extends Component {
                 />
               </Col>
             </Row>
-
+            <Row />
             <Row className="footerPosition w-100">
               <ModalHelp />
 
@@ -128,14 +128,19 @@ class App extends Component {
             </Row>
           </Container>
         ) : (
-          <Container fluid className="tweet" style={{ height: "100vh" }}>
+          <Container
+            fluid
+            className="tweet"
+            id="toTheTop"
+            style={{ height: "100vh" }}
+          >
             <Row id="wallHeader" style={{ color: "white" }}>
-              <h1 id="titleHashtag" className="mt-2">
+              <h1 className="mt-2" id="titleHashtag">
                 #{this.state.title}
               </h1>
 
               <Button onClick={this.handleClickNewButton} color="primary">
-                <p className="textButton ">#New</p>
+                <p className="textButton">#New</p>
               </Button>
             </Row>
             <Nav tabs className="navTabs d-flex justify-content-center">
@@ -183,9 +188,17 @@ class App extends Component {
                     <TweetCard {...post} />
                   ))}
                 </CardColumns>
+                <a className="toTheTopLayout" href="#titleHashtag">
+                  <img
+                    src="images/arrow-alt-circle-up-regular.svg"
+                    alt="toTheTopp"
+                    className="buttonToTheTop"
+                  />
+                </a>
               </TabPane>
               <TabPane tabId="2">
                 <Row className="justify-content-center">
+                  {/* <Col>Top 1</Col> */}
                   <Col xs={{ size: 4 }}>
                     {this.state.postlike
                       .sort(function(a, b) {
@@ -195,6 +208,20 @@ class App extends Component {
                       .map(postTopTweet => <TweetCard {...postTopTweet} />)
                       .slice(0, 10)}
                   </Col>
+                  <a className="toTheTopLayout" href="#titleHashtag">
+                    <img
+                      src="images/arrow-alt-circle-up-regular.svg"
+                      alt="toTheTopp"
+                      className="buttonToTheTop"
+                    />
+                  </a>
+                  {/* <Col xs={{ size: 4 }}>
+                    <h1>
+                      <span className="heart">❤</span>
+                      {this.state.postlike.map(justLikeNb => justLikeNb.likeNb)}
+                      ;
+                    </h1>
+                  </Col> */}
                 </Row>
               </TabPane>
               <TabPane tabId="3">
@@ -213,6 +240,13 @@ class App extends Component {
                       )
                   )}
                 </CardColumns>
+                <a className="toTheTopLayout" href="#toTheTop">
+                  <img
+                    src="images/arrow-alt-circle-up-regular.svg"
+                    alt="toTheTopp"
+                    className="buttonToTheTop"
+                  />
+                </a>
               </TabPane>
             </TabContent>
           </Container>
