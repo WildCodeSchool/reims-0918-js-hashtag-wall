@@ -6,6 +6,7 @@ import Loading from "./Loading";
 const HashtagInput = props => {
   return (
     <div>
+      <form>
       <InputGroup size="lg">
         <InputGroupAddon addonType="prepend">#</InputGroupAddon>
         <Input
@@ -15,32 +16,35 @@ const HashtagInput = props => {
           onChange={props.onInputContent}
           type="text"
         />
-        <InputGroupAddon addonType="append">
-          <Button color="primary" onClick={props.onXClick}>
-            X
-          </Button>
-        </InputGroupAddon>
-      </InputGroup>
-      {!props.startLoad ? (
-        <div className="buttonPosition">
-          <img
-            src="images/twitterwhite.png"
-            className="logotwitter mt-5 mr-3"
-          />
-          <Button
-            href="#titleHashtag"
-            className="w-25 mt-5"
-            color="primary"
-            onClick={() => props.getTweet(props.title)}
-          >
-            <p className="buttonText">#Start</p>
-          </Button>
-        </div>
-      ) : (
-        <div className="d-flex justify-content-center mt-5">
-          <Loading />
-        </div>
-      )}
+          {props.title.length > 0 ? (
+            <InputGroupAddon addonType="append">
+              <Button color="primary" onClick={props.onXClick}>
+                X
+              </Button>
+            </InputGroupAddon>
+          ) : (
+            ""
+          )}
+        </InputGroup>
+        {!props.startLoad ? (
+          <div className="buttonPosition">
+            <Button
+              id="startBtn"
+              href="#titleHashtag"
+              className="w-25 mt-5"
+              color="primary"
+              disabled={props.title.length === 0}
+              onClick={() => props.getTweet(props.title)}
+            >
+              <p className="buttonText">#Start</p>
+            </Button>
+          </div>
+        ) : (
+          <div className="d-flex justify-content-center mt-5">
+            <Loading />
+          </div>
+        )}
+      </form>
     </div>
   );
 };
