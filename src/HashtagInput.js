@@ -14,12 +14,15 @@ const HashtagInput = props => {
           placeholder="Your Tag !"
           onChange={props.onInputContent}
           type="text"
+          onKeyPress={event => {
+            if (event.key === "Enter") {
+              props.getTweet(props.title);
+            }
+          }}
         />
-        <InputGroupAddon addonType="append">
-          <Button color="primary" onClick={props.onXClick}>
-            X
-          </Button>
-        </InputGroupAddon>
+        <Button color="primary" onClick={props.onXClick}>
+          X
+        </Button>
       </InputGroup>
       {!props.startLoad ? (
         <div className="buttonPosition">
