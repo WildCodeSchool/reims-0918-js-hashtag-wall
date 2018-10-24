@@ -146,6 +146,7 @@ class App extends Component {
             <Nav tabs className="navTabs d-flex justify-content-center">
               <NavItem>
                 <NavLink
+                  style={{ cursor: "pointer" }}
                   className={classnames("navlink", {
                     active: this.state.activeTab === "1"
                   })}
@@ -158,6 +159,7 @@ class App extends Component {
               </NavItem>
               <NavItem>
                 <NavLink
+                  style={{ cursor: "pointer" }}
                   className={classnames("navlink", {
                     active: this.state.activeTab === "2"
                   })}
@@ -170,6 +172,7 @@ class App extends Component {
               </NavItem>
               <NavItem>
                 <NavLink
+                  style={{ cursor: "pointer" }}
                   className={classnames("navlink", {
                     active: this.state.activeTab === "3"
                   })}
