@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-
+import "./ModalHelp.css";
 import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from "reactstrap";
 
 class ModalHelp extends Component {
@@ -39,14 +39,47 @@ class ModalHelp extends Component {
           <ModalHeader toggle={this.toggle} close={closeBtn}>
             How to use the #Wall ?
           </ModalHeader>
-          <ModalBody>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-            eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
-            ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-            aliquip ex ea commodo consequat. Duis aute irure dolor in
-            reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-            pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
-            culpa qui officia deserunt mollit anim id est laborum.
+          <ModalBody style={{ textAlign: "center" }}>
+            <img
+              alt="capture-home"
+              src="images/Capture_wall1.png"
+              style={{ height: "50vh" }}
+            />
+            <p
+              style={{
+                paddingTop: "10px",
+                paddingBottom: "40px"
+              }}
+            >
+              Enter your tag in the search bar and click Start or press Enter to
+              launch the wall{" "}
+            </p>
+            <img
+              alt="capture-wall"
+              src="images/Capture_wall2.png"
+              style={{ height: "50vh" }}
+            />
+            <p
+              style={{
+                paddingTop: "10px",
+                paddingBottom: "40px"
+              }}
+            >
+              The Wall displays the tweets from the newest to the oldest, its
+              cycle is over 7 days{" "}
+            </p>
+            <img
+              alt="capture-wall"
+              src="images/Capture_wall3.png"
+              style={{ height: "50vh" }}
+            />
+            <p
+              style={{
+                paddingTop: "10px"
+              }}
+            >
+              The New button at the top right brings you back to the homepage{" "}
+            </p>
           </ModalBody>
           <ModalFooter>
             <Button onClick={this.toggle}>Understood !</Button>
