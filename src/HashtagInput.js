@@ -16,8 +16,9 @@ const HashtagInput = props => {
             onChange={props.onInputContent}
             type="text"
             onKeyPress={event => {
-              if (event.key === "Enter") {
+              if (event.key === "Enter" && props.title.length > 0) {
                 props.getTweet(props.title);
+                event.preventDefault();
               }
             }}
           />
