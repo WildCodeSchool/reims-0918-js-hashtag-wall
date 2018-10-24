@@ -8,6 +8,7 @@ import {
   Row,
   Col
 } from "reactstrap";
+import TweetModal from "./TweetModal";
 
 const TweetCard = props => {
   return (
@@ -52,17 +53,31 @@ const TweetCard = props => {
               <Col xs="12">
                 <CardText className="pb-2">{props.message}</CardText>
               </Col>
+            </Row>
+            <Row>
               <Col xs="6">
                 <CardText className="text-center">
                   <span className="heart">❤</span>
                   {props.likeNb}
                 </CardText>
               </Col>
-              <Col xs="6">
+              <Col xs="4">
                 <CardText className="text-center">
                   <img src="images/rt.png" style={{ width: "25px" }} alt="RT" />
                   {props.rtNb}
                 </CardText>
+              </Col>
+              <Col xs="6">
+                {/* <TweetModal
+                  picture={props.picture}
+                  author={props.author}
+                  userName={props.userName}
+                  logo={props.logo}
+                  likeNb={props.likeNb}
+                  rtNb={props.rtNb}
+                  date={props.date}
+                  message={props.message}
+                /> */}
               </Col>
             </Row>
           </CardBody>

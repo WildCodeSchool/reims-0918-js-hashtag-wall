@@ -5,6 +5,7 @@ import HashtagInput from "./HashtagInput";
 import Footer from "./Footer";
 import Header from "./Header";
 import TweetCard from "./TweetCard";
+import TweetModal from "./TweetModal";
 import classnames from "classnames";
 import {
   Container,
@@ -50,7 +51,20 @@ class App extends Component {
       title: "",
       isTweetPageDisplayed: false,
       isLoading: false,
-      activeTab: "1"
+      activeTab: "1",
+      selectedTweet: null
+      //{
+      //   picture:
+      //     "https://upload.wikimedia.org/wikipedia/en/2/26/Papasmurf1.jpg",
+      //   author: "Grand Schtroumpf",
+      //   userName: "@Papasmurf",
+      //   message:
+      //     "Un schtroumpf sachant schtroumpfer doit savoir schtroumpfer sans son schtroumpf",
+      //   logo: "",
+      //   likeNb: "24",
+      //   rtNb: "5",
+      //   date: "23 oct. 2018"
+      // }
     };
     this.handleClickNewButton = this.handleClickNewButton.bind(this);
     this.toggle = this.toggle.bind(this);
@@ -129,6 +143,18 @@ class App extends Component {
           </Container>
         ) : (
           <Container fluid className="tweet" style={{ height: "100vh" }}>
+            {this.state.selectedTweet !== null && (
+              <TweetModal
+                picture={this.state.selectedTweet.picture}
+                author={this.state.selectedTweet.author}
+                userName={this.state.selectedTweet.userName}
+                logo={this.state.selectedTweet.logo}
+                likeNb={this.state.selectedTweet.likeNb}
+                rtNb={this.state.selectedTweet.rtNb}
+                date={this.state.selectedTweet.date}
+                message={this.state.selectedTweet.message}
+              />
+            )}
             <Row id="wallHeader" style={{ color: "white" }}>
               <h1 id="titleHashtag" className="mt-2">
                 #{this.state.title}

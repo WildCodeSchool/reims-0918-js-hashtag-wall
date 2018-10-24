@@ -26,6 +26,7 @@ const HashtagInput = props => {
           <img
             src="images/twitterwhite.png"
             className="logotwitter mt-5 mr-3"
+            alt="logoTwitter"
           />
           <Button
             href="#titleHashtag"
