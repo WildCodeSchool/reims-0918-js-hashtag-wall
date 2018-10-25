@@ -1,6 +1,5 @@
 import React from "react";
 import {
-  Button,
   Modal,
   ModalHeader,
   ModalBody,
@@ -10,27 +9,11 @@ import {
 } from "reactstrap";
 
 class TweetModal extends React.Component {
-  // constructor(props) {
-  //   super(props);
-  //   this.state = {
-  //     modal: false
-  //   };
-
-  //   this.state.modal = this.state.modal.bind(this);
-  // }
-
-  // toggle() {
-  //   this.setState({
-  //     modal: !this.state.modal
-  //   });
-  // }
-
   render() {
     const closeBtn = (
       <button
         className="close"
         onClick={() => {
-          console.log("closemodal");
           this.props.closeModal();
         }}
       />

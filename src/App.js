@@ -11,7 +11,6 @@ import {
   Container,
   Row,
   Col,
-  CardColumns,
   Button,
   TabContent,
   TabPane,
@@ -19,6 +18,7 @@ import {
   NavItem,
   NavLink
 } from "reactstrap";
+import Masonry from "react-masonry-component";
 
 const tweetToPost = tweets => {
   return tweets.statuses.map(tweet => {
@@ -114,15 +114,11 @@ class App extends Component {
   }
 
   closeModal() {
-    console.log("textete");
     this.setState({
       modal: false
     });
   }
 
-  // toggleTweet() {
-  //   this.setState({ modal: !this.state.modal });
-  // }
   render() {
     return (
       <div>
@@ -168,7 +164,6 @@ class App extends Component {
                 message={this.state.selectedTweet.message}
                 modal={this.state.modal}
                 closeModal={this.closeModal}
-                //onClickModal={this.toggleTweet}
               />
             )}
 
@@ -224,7 +219,10 @@ class App extends Component {
             </Nav>
             <TabContent activeTab={this.state.activeTab}>
               <TabPane tabId="1">
-                <CardColumns>
+                <Masonry
+                  options={{ fitWidth: true }}
+                  style={{ margin: "auto" }}
+                >
                   {this.state.posts.map((post, index) => (
                     <TweetCard
                       {...post}
@@ -232,7 +230,8 @@ class App extends Component {
                       key={index}
                     />
                   ))}
-                </CardColumns>
+                </Masonry>
+
                 <a className="toTheTopLayout" href="#titleHashtag">
                   <img
                     src="images/arrow-alt-circle-up-regular.svg"
@@ -242,41 +241,37 @@ class App extends Component {
                 </a>
               </TabPane>
               <TabPane tabId="2">
-                <Row className="justify-content-center">
-                  {/* <Col>Top 1</Col> */}
-                  <Col xs={{ size: 4 }}>
-                    {this.state.postlike
-                      .sort(function(a, b) {
-                        return a.likeNb - b.likeNb;
-                      })
-                      .reverse()
-                      .map((postTopTweet, index) => (
-                        <TweetCard
-                          {...postTopTweet}
-                          tweetToModal={this.handleTweetToModal}
-                          key={index}
-                        />
-                      ))
-                      .slice(0, 10)}
-                  </Col>
-                  <a className="toTheTopLayout" href="#titleHashtag">
-                    <img
-                      src="images/arrow-alt-circle-up-regular.svg"
-                      alt="toTheTopp"
-                      className="buttonToTheTop"
-                    />
-                  </a>
-                  {/* <Col xs={{ size: 4 }}>
-                    <h1>
-                      <span className="heart">❤</span>
-                      {this.state.postlike.map(justLikeNb => justLikeNb.likeNb)}
-                      ;
-                    </h1>
-                  </Col> */}
-                </Row>
+                <Masonry
+                  options={{ fitWidth: true }}
+                  style={{ margin: "auto" }}
+                >
+                  {this.state.postlike
+                    .sort(function(a, b) {
+                      return a.likeNb - b.likeNb;
+                    })
+                    .reverse()
+                    .map((postTopTweet, index) => (
+                      <TweetCard
+                        {...postTopTweet}
+                        tweetToModal={this.handleTweetToModal}
+                        key={index}
+                      />
+                    ))
+                    .slice(0, 10)}
+                </Masonry>
+                <a className="toTheTopLayout" href="#titleHashtag">
+                  <img
+                    src="images/arrow-alt-circle-up-regular.svg"
+                    alt="toTheTopp"
+                    className="buttonToTheTop"
+                  />
+                </a>
               </TabPane>
               <TabPane tabId="3">
-                <CardColumns>
+                <Masonry
+                  options={{ fitWidth: true }}
+                  style={{ margin: "auto" }}
+                >
                   {this.state.postPics.map(
                     (postPicsTweet, index) =>
                       postPicsTweet.picture !== "N/A" && (
@@ -287,12 +282,13 @@ class App extends Component {
                           likeNb={postPicsTweet.likeNb}
                           rtNb={postPicsTweet.rtNb}
                           date={postPicsTweet.date}
+                          userName={postPicsTweet.userName}
                           tweetToModal={this.handleTweetToModal}
                           key={index}
                         />
                       )
                   )}
-                </CardColumns>
+                </Masonry>
                 <a className="toTheTopLayout" href="#toTheTop">
                   <img
                     src="images/arrow-alt-circle-up-regular.svg"
