@@ -213,7 +213,7 @@ class App extends Component {
                     this.toggleTab("3");
                   }}
                 >
-                  Photos
+                  Pictures
                 </NavLink>
               </NavItem>
             </Nav>
