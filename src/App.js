@@ -114,15 +114,11 @@ class App extends Component {
   }
 
   closeModal() {
-    console.log("textete");
     this.setState({
       modal: false
     });
   }
 
-  // toggleTweet() {
-  //   this.setState({ modal: !this.state.modal });
-  // }
   render() {
     return (
       <div>
@@ -168,7 +164,6 @@ class App extends Component {
                 message={this.state.selectedTweet.message}
                 modal={this.state.modal}
                 closeModal={this.closeModal}
-                //onClickModal={this.toggleTweet}
               />
             )}
 
@@ -229,8 +224,11 @@ class App extends Component {
                   style={{ margin: "auto" }}
                 >
                   {this.state.posts.map((post, index) => (
-                    <TweetCard {...post} tweetToModal={this.handleTweetToModal}
-                    key={index} />
+                    <TweetCard
+                      {...post}
+                      tweetToModal={this.handleTweetToModal}
+                      key={index}
+                    />
                   ))}
                 </Masonry>
 
@@ -258,7 +256,8 @@ class App extends Component {
                         tweetToModal={this.handleTweetToModal}
                         key={index}
                       />
-                    )).slice(0, 10)}
+                    ))
+                    .slice(0, 10)}
                 </Masonry>
                 <a className="toTheTopLayout" href="#titleHashtag">
                   <img
