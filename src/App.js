@@ -298,6 +298,7 @@ class App extends Component {
                 </a>
               </TabPane>
             </TabContent>
+            <Footer />
           </Container>
         )}
       </div>
