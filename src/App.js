@@ -249,11 +249,11 @@ class App extends Component {
                         return a.likeNb - b.likeNb;
                       })
                       .reverse()
-                      .map(postTopTweet => (
+                      .map((postTopTweet, index) => (
                         <TweetCard
                           {...postTopTweet}
                           tweetToModal={this.handleTweetToModal}
-                          key={postTopTweet.userName}
+                          key={index}
                         />
                       ))
                       .slice(0, 10)}
