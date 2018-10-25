@@ -4,6 +4,7 @@ import { Card, CardText, CardBody, CardTitle, Row, Col } from "reactstrap";
 const TweetCard = props => {
   return (
     <Card
+      style={{ cursor: "pointer" }}
       onClick={() => {
         props.tweetToModal({ ...props });
       }}
