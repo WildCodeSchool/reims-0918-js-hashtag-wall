@@ -4,11 +4,10 @@ import { Card, CardText, CardBody, CardTitle, Row, Col } from "reactstrap";
 const TweetCard = props => {
   return (
     <Card
-      style={{ cursor: "pointer" }}
       onClick={() => {
         props.tweetToModal({ ...props });
       }}
-      style={{ width: "450px", margin: "10px" }}
+      style={{ width: "450px", margin: "10px", cursor: "pointer" }}
       className="mt-1"
     >
       <CardBody className="pt-2 pb-0">
@@ -18,18 +17,18 @@ const TweetCard = props => {
               className="float-left mr-2"
               src={props.logo}
               alt="avatar"
-              style={{ "border-radius": "25px" }}
+              style={{ borderRadius: "25px" }}
             />
             <span
               className="mr-2 mt-2"
-              style={{ "font-size": "15px", float: "right" }}
+              style={{ fontSize: "15px", float: "right" }}
             >
               {props.date}
             </span>
             <div className="pt-2">
               {props.author}
               <br />
-              <span style={{ "font-size": "15px" }}>{props.userName}</span>
+              <span style={{ fontSize: "15px" }}>{props.userName}</span>
             </div>
           </CardTitle>
         </Row>
@@ -39,7 +38,7 @@ const TweetCard = props => {
         <img
           className="w-100"
           src={props.picture}
-          style={{ "max-height": "650px" }}
+          style={{ maxHeight: "650px" }}
           alt="tweet"
         />
       )}

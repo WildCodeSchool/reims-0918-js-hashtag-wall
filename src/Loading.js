@@ -2,12 +2,12 @@ import React from "react";
 import "./Loading.css";
 const Loading = () => (
   <div>
-    <div class="twitter-bird-animation" />
-    <div class="loading">
-      <span class="text">Loading</span>
-      <span class="blob1 blob" />
-      <span class="blob2 blob" />
-      <span class="blob3 blob" />
+    <div className="twitter-bird-animation" />
+    <div className="loading">
+      <span className="text">Loading</span>
+      <span className="blob1 blob" />
+      <span className="blob2 blob" />
+      <span className="blob3 blob" />
     </div>
   </div>
 );
