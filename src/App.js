@@ -114,7 +114,6 @@ class App extends Component {
   }
 
   closeModal() {
-    console.log("textete");
     this.setState({
       modal: false
     });

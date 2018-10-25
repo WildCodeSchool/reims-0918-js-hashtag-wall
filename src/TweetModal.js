@@ -14,7 +14,6 @@ class TweetModal extends React.Component {
       <button
         className="close"
         onClick={() => {
-          console.log("closemodal");
           this.props.closeModal();
         }}
       />
