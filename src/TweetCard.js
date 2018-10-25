@@ -13,6 +13,7 @@ const TweetCard = props => {
   return (
     <div>
       <Container
+        style={{ cursor: "pointer" }}
         fluid
         className="p-0"
         onClick={() => {
