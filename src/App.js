@@ -239,6 +239,7 @@ class App extends Component {
                           likeNb={postPicsTweet.likeNb}
                           rtNb={postPicsTweet.rtNb}
                           date={postPicsTweet.date}
+                          userName={postPicsTweet.userName}
                         />
                       )
                   )}
