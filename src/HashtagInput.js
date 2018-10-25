@@ -40,7 +40,6 @@ const HashtagInput = props => {
               alt="logoTwitter"
             />
             <Button
-              activeTab={props.activeTab}
               className="w-25 mt-5"
               color="primary"
               disabled={props.title.length === 0}
