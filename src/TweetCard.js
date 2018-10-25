@@ -3,7 +3,7 @@ import { Card, CardText, CardBody, CardTitle, Row, Col } from "reactstrap";
 
 const TweetCard = props => {
   return (
-    <Card style={{ width: "450px" }} className="mt-1">
+    <Card style={{ width: "450px", margin: "10px" }} className="mt-1">
       <CardBody className="pt-2 pb-0">
         <Row>
           <CardTitle className="w-100">

@@ -10,7 +10,6 @@ import {
   Container,
   Row,
   Col,
-  CardColumns,
   Button,
   TabContent,
   TabPane,
@@ -187,11 +186,15 @@ class App extends Component {
             </Nav>
             <TabContent activeTab={this.state.activeTab}>
               <TabPane tabId="1">
-                <Masonry>
+                <Masonry
+                  options={{ fitWidth: true }}
+                  style={{ margin: "auto" }}
+                >
                   {this.state.posts.map(post => (
                     <TweetCard {...post} />
                   ))}
                 </Masonry>
+
                 <a className="toTheTopLayout" href="#titleHashtag">
                   <img
                     src="images/arrow-alt-circle-up-regular.svg"
@@ -201,7 +204,10 @@ class App extends Component {
                 </a>
               </TabPane>
               <TabPane tabId="2">
-                <Masonry>
+                <Masonry
+                  options={{ fitWidth: true }}
+                  style={{ margin: "auto" }}
+                >
                   {this.state.postlike
                     .sort(function(a, b) {
                       return a.likeNb - b.likeNb;
@@ -219,7 +225,10 @@ class App extends Component {
                 </a>
               </TabPane>
               <TabPane tabId="3">
-                <Masonry>
+                <Masonry
+                  options={{ fitWidth: true }}
+                  style={{ margin: "auto" }}
+                >
                   {this.state.postPics.map(
                     postPicsTweet =>
                       postPicsTweet.picture !== "N/A" && (
