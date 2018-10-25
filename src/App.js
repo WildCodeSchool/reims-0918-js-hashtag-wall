@@ -58,6 +58,7 @@ class App extends Component {
     this.handleClickNewButton = this.handleClickNewButton.bind(this);
     this.handleTweetToModal = this.handleTweetToModal.bind(this);
     this.toggleTab = this.toggleTab.bind(this);
+    this.closeModal = this.closeModal.bind(this);
   }
 
   getTweet = hashtag => {

@@ -49,14 +49,14 @@ class TweetModal extends React.Component {
                   className="float-left mr-2"
                   src={this.props.logo}
                   alt="avatar"
-                  style={{ "border-radius": "25px" }}
+                  style={{ borderRadius: "25px" }}
                 />
               </Col>
               <Col xs="5">
                 <div className="pt-2">
                   {this.props.author}
                   <br />
-                  <span style={{ "font-size": "15px" }}>
+                  <span style={{ fontSize: "15px" }}>
                     {this.props.userName}
                   </span>
                 </div>
@@ -64,7 +64,7 @@ class TweetModal extends React.Component {
               <Col xs="5">
                 <span
                   className="mr-2 mt-2"
-                  style={{ "font-size": "15px", float: "right" }}
+                  style={{ fontSize: "15px", float: "right" }}
                 >
                   {this.props.date}
                 </span>
@@ -78,7 +78,7 @@ class TweetModal extends React.Component {
                 <img
                   className="w-100"
                   src={this.props.picture}
-                  style={{ "max-height": "650px" }}
+                  style={{ maxHeight: "650px" }}
                   alt="tweet"
                 />
               )}
