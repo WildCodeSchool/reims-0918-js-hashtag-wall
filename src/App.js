@@ -18,6 +18,7 @@ import {
   NavItem,
   NavLink
 } from "reactstrap";
+import Masonry from "react-masonry-component";
 
 const tweetToPost = tweets => {
   return tweets.statuses.map(tweet => {
@@ -186,11 +187,11 @@ class App extends Component {
             </Nav>
             <TabContent activeTab={this.state.activeTab}>
               <TabPane tabId="1">
-                <CardColumns>
+                <Masonry>
                   {this.state.posts.map(post => (
                     <TweetCard {...post} />
                   ))}
-                </CardColumns>
+                </Masonry>
                 <a className="toTheTopLayout" href="#titleHashtag">
                   <img
                     src="images/arrow-alt-circle-up-regular.svg"
@@ -200,35 +201,25 @@ class App extends Component {
                 </a>
               </TabPane>
               <TabPane tabId="2">
-                <Row className="justify-content-center">
-                  {/* <Col>Top 1</Col> */}
-                  <Col xs={{ size: 4 }}>
-                    {this.state.postlike
-                      .sort(function(a, b) {
-                        return a.likeNb - b.likeNb;
-                      })
-                      .reverse()
-                      .map(postTopTweet => <TweetCard {...postTopTweet} />)
-                      .slice(0, 10)}
-                  </Col>
-                  <a className="toTheTopLayout" href="#titleHashtag">
-                    <img
-                      src="images/arrow-alt-circle-up-regular.svg"
-                      alt="toTheTopp"
-                      className="buttonToTheTop"
-                    />
-                  </a>
-                  {/* <Col xs={{ size: 4 }}>
-                    <h1>
-                      <span className="heart">❤</span>
-                      {this.state.postlike.map(justLikeNb => justLikeNb.likeNb)}
-                      ;
-                    </h1>
-                  </Col> */}
-                </Row>
+                <Masonry>
+                  {this.state.postlike
+                    .sort(function(a, b) {
+                      return a.likeNb - b.likeNb;
+                    })
+                    .reverse()
+                    .map(postTopTweet => <TweetCard {...postTopTweet} />)
+                    .slice(0, 10)}
+                </Masonry>
+                <a className="toTheTopLayout" href="#titleHashtag">
+                  <img
+                    src="images/arrow-alt-circle-up-regular.svg"
+                    alt="toTheTopp"
+                    className="buttonToTheTop"
+                  />
+                </a>
               </TabPane>
               <TabPane tabId="3">
-                <CardColumns>
+                <Masonry>
                   {this.state.postPics.map(
                     postPicsTweet =>
                       postPicsTweet.picture !== "N/A" && (
@@ -242,7 +233,7 @@ class App extends Component {
                         />
                       )
                   )}
-                </CardColumns>
+                </Masonry>
                 <a className="toTheTopLayout" href="#toTheTop">
                   <img
                     src="images/arrow-alt-circle-up-regular.svg"
