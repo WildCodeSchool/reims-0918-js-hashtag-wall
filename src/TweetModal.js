@@ -39,10 +39,10 @@ class TweetModal extends React.Component {
       <div>
         <Modal
           isOpen={this.props.modal}
-          toggle={this.props.modal}
+          toggle={this.props.closeModal}
           className={this.props.className}
         >
-          <ModalHeader toggle={this.props.modal} close={closeBtn}>
+          <ModalHeader toggle={this.props.closeModal} close={closeBtn}>
             <Row>
               <Col xs="2">
                 <img
