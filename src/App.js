@@ -80,7 +80,7 @@ class App extends Component {
   };
 
   handleClickNewButton() {
-    this.setState({ isTweetPageDisplayed: false, title: "" });
+    this.setState({ isTweetPageDisplayed: false, title: "", activeTab: "1" });
   }
 
   handleXClick = event => {
@@ -213,7 +213,7 @@ class App extends Component {
                     this.toggleTab("3");
                   }}
                 >
-                  Photos
+                  Pictures
                 </NavLink>
               </NavItem>
             </Nav>
