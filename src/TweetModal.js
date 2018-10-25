@@ -10,34 +10,39 @@ import {
 } from "reactstrap";
 
 class TweetModal extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      modal: false
-    };
+  // constructor(props) {
+  //   super(props);
+  //   this.state = {
+  //     modal: false
+  //   };
 
-    this.toggle = this.toggle.bind(this);
-  }
+  //   this.state.modal = this.state.modal.bind(this);
+  // }
 
-  toggle() {
-    this.setState({
-      modal: !this.state.modal
-    });
-  }
+  // toggle() {
+  //   this.setState({
+  //     modal: !this.state.modal
+  //   });
+  // }
 
   render() {
+    const closeBtn = (
+      <button
+        className="close"
+        onClick={() => {
+          console.log("closemodal");
+          this.props.closeModal();
+        }}
+      />
+    );
     return (
       <div>
-        <Button color="link" onClick={this.toggle}>
-          <img src="images/extend.png" alt="maximize" />
-          {this.props.buttonLabel}
-        </Button>
         <Modal
-          isOpen={this.state.modal}
-          toggle={this.toggle}
+          isOpen={this.props.modal}
+          toggle={this.props.modal}
           className={this.props.className}
         >
-          <ModalHeader toggle={this.toggle}>
+          <ModalHeader toggle={this.props.modal} close={closeBtn}>
             <Row>
               <Col xs="2">
                 <img

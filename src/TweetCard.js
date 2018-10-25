@@ -8,12 +8,17 @@ import {
   Row,
   Col
 } from "reactstrap";
-import TweetModal from "./TweetModal";
 
 const TweetCard = props => {
   return (
     <div>
-      <Container fluid className="p-0">
+      <Container
+        fluid
+        className="p-0"
+        onClick={() => {
+          props.tweetToModal({ ...props });
+        }}
+      >
         <Card style={{ maxheight: "100px" }} className="mt-1">
           <CardBody className="pt-2 pb-0">
             <Row>
@@ -66,18 +71,6 @@ const TweetCard = props => {
                   <img src="images/rt.png" style={{ width: "25px" }} alt="RT" />
                   {props.rtNb}
                 </CardText>
-              </Col>
-              <Col xs="6">
-                {/* <TweetModal
-                  picture={props.picture}
-                  author={props.author}
-                  userName={props.userName}
-                  logo={props.logo}
-                  likeNb={props.likeNb}
-                  rtNb={props.rtNb}
-                  date={props.date}
-                  message={props.message}
-                /> */}
               </Col>
             </Row>
           </CardBody>
