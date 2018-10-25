@@ -224,10 +224,11 @@ class App extends Component {
             <TabContent activeTab={this.state.activeTab}>
               <TabPane tabId="1">
                 <CardColumns>
-                  {this.state.posts.map(post => (
+                  {this.state.posts.map((post, index) => (
                     <TweetCard
                       {...post}
                       tweetToModal={this.handleTweetToModal}
+                      key={index}
                     />
                   ))}
                 </CardColumns>
@@ -252,6 +253,7 @@ class App extends Component {
                         <TweetCard
                           {...postTopTweet}
                           tweetToModal={this.handleTweetToModal}
+                          key={postTopTweet.userName}
                         />
                       ))
                       .slice(0, 10)}
@@ -275,7 +277,7 @@ class App extends Component {
               <TabPane tabId="3">
                 <CardColumns>
                   {this.state.postPics.map(
-                    postPicsTweet =>
+                    (postPicsTweet, index) =>
                       postPicsTweet.picture !== "N/A" && (
                         <TweetCard
                           picture={postPicsTweet.picture}
@@ -285,6 +287,7 @@ class App extends Component {
                           rtNb={postPicsTweet.rtNb}
                           date={postPicsTweet.date}
                           tweetToModal={this.handleTweetToModal}
+                          key={index}
                         />
                       )
                   )}
