@@ -51,8 +51,8 @@ class ModalHelp extends Component {
                 paddingBottom: "40px"
               }}
             >
-              Enter your tag in the search bar and click Start or press Enter to
-              launch the wall{" "}
+              Enter your tag in the search bar and click <strong>Start</strong>{" "}
+              or press <strong>Enter</strong> to launch the wall{" "}
             </p>
             <img
               alt="capture-wall"
@@ -66,7 +66,7 @@ class ModalHelp extends Component {
               }}
             >
               The Wall displays the tweets from the newest to the oldest, its
-              cycle is over 7 days{" "}
+              cycle is over <strong>7 days</strong>{" "}
             </p>
             <img
               alt="capture-wall"
@@ -75,10 +75,40 @@ class ModalHelp extends Component {
             />
             <p
               style={{
-                paddingTop: "10px"
+                paddingTop: "10px",
+                paddingBottom: "40px"
               }}
             >
-              The New button at the top right brings you back to the homepage{" "}
+              The <strong>New</strong> button at the top right brings you back
+              to the homepage{" "}
+            </p>
+            <img
+              alt="capture-wall"
+              src="images/Capture_wall4.png"
+              style={{ height: "50vh" }}
+            />
+            <p
+              style={{
+                paddingTop: "10px",
+                paddingBottom: "40px"
+              }}
+            >
+              In the tab <strong>Top tweets</strong> posts are listed according
+              to the number of like
+            </p>
+            <img
+              alt="capture-wall"
+              src="images/Capture_wall5.png"
+              style={{ height: "50vh" }}
+            />
+            <p
+              style={{
+                paddingTop: "10px",
+                paddingBottom: "40px"
+              }}
+            >
+              In the tab <strong>Pictures</strong> only post with pictures are
+              displayed
             </p>
           </ModalBody>
           <ModalFooter>
