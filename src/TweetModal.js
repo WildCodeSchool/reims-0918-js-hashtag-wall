@@ -1,12 +1,5 @@
 import React from "react";
-import {
-  Modal,
-  ModalHeader,
-  ModalBody,
-  ModalFooter,
-  Row,
-  Col
-} from "reactstrap";
+import { Modal, ModalHeader, ModalBody, ModalFooter, Col } from "reactstrap";
 
 class TweetModal extends React.Component {
   render() {
@@ -26,33 +19,15 @@ class TweetModal extends React.Component {
           className={this.props.className}
         >
           <ModalHeader toggle={this.props.closeModal} close={closeBtn}>
-            <Row>
-              <Col xs="2">
-                <img
-                  className="float-left mr-2"
-                  src={this.props.logo}
-                  alt="avatar"
-                  style={{ borderRadius: "25px" }}
-                />
-              </Col>
-              <Col xs="5">
-                <div className="pt-2">
-                  {this.props.author}
-                  <br />
-                  <span style={{ fontSize: "15px" }}>
-                    {this.props.userName}
-                  </span>
-                </div>
-              </Col>
-              <Col xs="5">
-                <span
-                  className="mr-2 mt-2"
-                  style={{ fontSize: "15px", float: "right" }}
-                >
-                  {this.props.date}
-                </span>
-              </Col>
-            </Row>
+            <img
+              className="float-left mr-2"
+              src={this.props.logo}
+              alt="avatar"
+              style={{ borderRadius: "25px" }}
+            />
+            {this.props.author}
+            <br />
+            <span style={{ fontSize: "15px" }}>{this.props.userName}</span>
           </ModalHeader>
 
           <ModalBody>
@@ -70,17 +45,16 @@ class TweetModal extends React.Component {
               <p>{this.props.message}</p>
             </div>
           </ModalBody>
+
           <ModalFooter>
-            <Row>
-              <Col xs="4">
-                <span className="heart">❤</span>
-                {this.props.likeNb}
-              </Col>
-              <Col xs="4">
-                <img src="images/rt.png" style={{ width: "25px" }} alt="RT" />
-                {this.props.rtNb}
-              </Col>
-            </Row>
+            <Col xs="6" className="text-center">
+              <span className="heart">❤</span>
+              {this.props.likeNb}
+            </Col>
+            <Col xs="6" className="text-center">
+              <img src="images/rt.png" style={{ width: "25px" }} alt="RT" />
+              {this.props.rtNb}
+            </Col>
           </ModalFooter>
         </Modal>
       </div>
