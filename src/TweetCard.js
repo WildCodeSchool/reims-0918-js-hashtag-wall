@@ -4,11 +4,10 @@ import { Card, CardText, CardBody, CardTitle, Row, Col } from "reactstrap";
 const TweetCard = props => {
   return (
     <Card
-      style={{ cursor: "pointer" }}
       onClick={() => {
         props.tweetToModal({ ...props });
       }}
-      style={{ width: "450px", margin: "10px" }}
+      style={{ width: "450px", margin: "10px", cursor: "pointer" }}
       className="mt-1"
     >
       <CardBody className="pt-2 pb-0">
