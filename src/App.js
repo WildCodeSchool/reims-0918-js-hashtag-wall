@@ -5,6 +5,7 @@ import HashtagInput from "./HashtagInput";
 import Footer from "./Footer";
 import Header from "./Header";
 import TweetCard from "./TweetCard";
+import TweetModal from "./TweetModal";
 import classnames from "classnames";
 import {
   Container,
@@ -50,10 +51,14 @@ class App extends Component {
       title: "",
       isTweetPageDisplayed: false,
       isLoading: false,
-      activeTab: "1"
+      activeTab: "1",
+      selectedTweet: null,
+      modal: false
     };
     this.handleClickNewButton = this.handleClickNewButton.bind(this);
-    this.toggle = this.toggle.bind(this);
+    this.handleTweetToModal = this.handleTweetToModal.bind(this);
+    this.toggleTab = this.toggleTab.bind(this);
+    this.closeModal = this.closeModal.bind(this);
   }
 
   getTweet = hashtag => {
@@ -93,7 +98,14 @@ class App extends Component {
     });
   };
 
-  toggle(tab) {
+  handleTweetToModal(tweet) {
+    this.setState({
+      selectedTweet: tweet,
+      modal: !this.state.modal
+    });
+  }
+
+  toggleTab(tab) {
     if (this.state.activeTab !== tab) {
       this.setState({
         activeTab: tab
@@ -101,6 +113,16 @@ class App extends Component {
     }
   }
 
+  closeModal() {
+    console.log("textete");
+    this.setState({
+      modal: false
+    });
+  }
+
+  // toggleTweet() {
+  //   this.setState({ modal: !this.state.modal });
+  // }
   render() {
     return (
       <div>
@@ -134,6 +156,22 @@ class App extends Component {
             id="toTheTop"
             style={{ height: "100vh" }}
           >
+            {this.state.selectedTweet !== null && (
+              <TweetModal
+                picture={this.state.selectedTweet.picture}
+                author={this.state.selectedTweet.author}
+                userName={this.state.selectedTweet.userName}
+                logo={this.state.selectedTweet.logo}
+                likeNb={this.state.selectedTweet.likeNb}
+                rtNb={this.state.selectedTweet.rtNb}
+                date={this.state.selectedTweet.date}
+                message={this.state.selectedTweet.message}
+                modal={this.state.modal}
+                closeModal={this.closeModal}
+                //onClickModal={this.toggleTweet}
+              />
+            )}
+
             <Row id="wallHeader" style={{ color: "white" }}>
               <h1 className="mt-2" id="titleHashtag">
                 #{this.state.title}
@@ -151,7 +189,7 @@ class App extends Component {
                     active: this.state.activeTab === "1"
                   })}
                   onClick={() => {
-                    this.toggle("1");
+                    this.toggleTab("1");
                   }}
                 >
                   Tweets
@@ -164,7 +202,7 @@ class App extends Component {
                     active: this.state.activeTab === "2"
                   })}
                   onClick={() => {
-                    this.toggle("2");
+                    this.toggleTab("2");
                   }}
                 >
                   Top tweets
@@ -177,7 +215,7 @@ class App extends Component {
                     active: this.state.activeTab === "3"
                   })}
                   onClick={() => {
-                    this.toggle("3");
+                    this.toggleTab("3");
                   }}
                 >
                   Photos
@@ -187,8 +225,12 @@ class App extends Component {
             <TabContent activeTab={this.state.activeTab}>
               <TabPane tabId="1">
                 <CardColumns>
-                  {this.state.posts.map(post => (
-                    <TweetCard {...post} />
+                  {this.state.posts.map((post, index) => (
+                    <TweetCard
+                      {...post}
+                      tweetToModal={this.handleTweetToModal}
+                      key={index}
+                    />
                   ))}
                 </CardColumns>
                 <a className="toTheTopLayout" href="#titleHashtag">
@@ -208,7 +250,13 @@ class App extends Component {
                         return a.likeNb - b.likeNb;
                       })
                       .reverse()
-                      .map(postTopTweet => <TweetCard {...postTopTweet} />)
+                      .map((postTopTweet, index) => (
+                        <TweetCard
+                          {...postTopTweet}
+                          tweetToModal={this.handleTweetToModal}
+                          key={index}
+                        />
+                      ))
                       .slice(0, 10)}
                   </Col>
                   <a className="toTheTopLayout" href="#titleHashtag">
@@ -230,7 +278,7 @@ class App extends Component {
               <TabPane tabId="3">
                 <CardColumns>
                   {this.state.postPics.map(
-                    postPicsTweet =>
+                    (postPicsTweet, index) =>
                       postPicsTweet.picture !== "N/A" && (
                         <TweetCard
                           picture={postPicsTweet.picture}
@@ -239,6 +287,8 @@ class App extends Component {
                           likeNb={postPicsTweet.likeNb}
                           rtNb={postPicsTweet.rtNb}
                           date={postPicsTweet.date}
+                          tweetToModal={this.handleTweetToModal}
+                          key={index}
                         />
                       )
                   )}
