@@ -247,17 +247,16 @@ class App extends Component {
                 >
                   {this.state.postlike
                     .sort(function(a, b) {
-                      return a.likeNb - b.likeNb;
+                      return b.likeNb - a.likeNb;
                     })
-                    .reverse()
+                    .slice(0, 10)
                     .map((postTopTweet, index) => (
                       <TweetCard
                         {...postTopTweet}
                         tweetToModal={this.handleTweetToModal}
                         key={index}
                       />
-                    ))
-                    .slice(0, 10)}
+                    ))}
                 </Masonry>
                 <a className="toTheTopLayout" href="#titleHashtag">
                   <img

@@ -51,7 +51,7 @@ const HashtagInput = props => {
             </Button>
           </div>
         ) : (
-          <div className="d-flex justify-content-center mt-5">
+          <div className="d-flex justify-content-center">
             <Loading />
           </div>
         )}
