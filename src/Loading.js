@@ -1,9 +1,14 @@
 import React from "react";
-import ReactLoading from "react-loading";
-
+import "./Loading.css";
 const Loading = () => (
-  <div className="loading">
-    <ReactLoading type="spin" color="white" />
+  <div>
+    <div class="twitter-bird-animation" />
+    <div class="loading">
+      <span class="text">Loading</span>
+      <span class="blob1 blob" />
+      <span class="blob2 blob" />
+      <span class="blob3 blob" />
+    </div>
   </div>
 );
 
