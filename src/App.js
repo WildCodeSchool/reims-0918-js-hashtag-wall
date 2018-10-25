@@ -120,9 +120,6 @@ class App extends Component {
     });
   }
 
-  // toggleTweet() {
-  //   this.setState({ modal: !this.state.modal });
-  // }
   render() {
     return (
       <div>
@@ -168,7 +165,6 @@ class App extends Component {
                 message={this.state.selectedTweet.message}
                 modal={this.state.modal}
                 closeModal={this.closeModal}
-                //onClickModal={this.toggleTweet}
               />
             )}
 
@@ -243,7 +239,6 @@ class App extends Component {
               </TabPane>
               <TabPane tabId="2">
                 <Row className="justify-content-center">
-                  {/* <Col>Top 1</Col> */}
                   <Col xs={{ size: 4 }}>
                     {this.state.postlike
                       .sort(function(a, b) {
@@ -266,13 +261,6 @@ class App extends Component {
                       className="buttonToTheTop"
                     />
                   </a>
-                  {/* <Col xs={{ size: 4 }}>
-                    <h1>
-                      <span className="heart">❤</span>
-                      {this.state.postlike.map(justLikeNb => justLikeNb.likeNb)}
-                      ;
-                    </h1>
-                  </Col> */}
                 </Row>
               </TabPane>
               <TabPane tabId="3">
