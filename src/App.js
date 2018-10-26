@@ -7,6 +7,7 @@ import Header from "./Header";
 import TweetCard from "./TweetCard";
 import TweetModal from "./TweetModal";
 import classnames from "classnames";
+import openSocket from "socket.io-client";
 import {
   Container,
   Row,
@@ -20,25 +21,27 @@ import {
 } from "reactstrap";
 import Masonry from "react-masonry-component";
 
+const createPost = tweet => {
+  const pictureMedia = tweet.entities.media
+    ? tweet.entities.media[0].media_url
+    : "N/A";
+  return {
+    picture: pictureMedia,
+    message: tweet.full_text,
+    author: tweet.user.name,
+    logo: tweet.user.profile_image_url,
+    likeNb: tweet.favorite_count,
+    rtNb: tweet.retweet_count,
+    userName: `@${tweet.user.screen_name}`,
+    date: tweet.created_at
+      .split(" ")
+      .splice(0, 4)
+      .join(" ")
+  };
+};
+
 const tweetToPost = tweets => {
-  return tweets.statuses.map(tweet => {
-    const pictureMedia = tweet.entities.media
-      ? tweet.entities.media[0].media_url
-      : "N/A";
-    return {
-      picture: pictureMedia,
-      message: tweet.full_text,
-      author: tweet.user.name,
-      logo: tweet.user.profile_image_url,
-      likeNb: tweet.favorite_count,
-      rtNb: tweet.retweet_count,
-      userName: `@${tweet.user.screen_name}`,
-      date: tweet.created_at
-        .split(" ")
-        .splice(0, 4)
-        .join(" ")
-    };
-  });
+  return tweets.statuses.map(createPost);
 };
 
 class App extends Component {
@@ -65,7 +68,7 @@ class App extends Component {
     this.setState({
       isLoading: true
     });
-    fetch(`https://safe-savannah-17783.herokuapp.com/?tag=${hashtag}`)
+    fetch(`http://localhost:5000?tag=${hashtag}`)
       .then(results => results.json()) // conversion du résultat en JSON
       .then(data => {
         this.setState({
@@ -75,7 +78,13 @@ class App extends Component {
           isTweetPageDisplayed: true,
           isLoading: false
         });
-        console.log(this.state.posts);
+        this.socket = openSocket("http://localhost:5050");
+
+        console.log(hashtag);
+        this.socket.on(`#${hashtag}`, data => {
+          let newList = [createPost(data), ...this.state.posts];
+          this.setState({ posts: newList });
+        });
       });
   };
 
