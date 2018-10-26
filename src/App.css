@@ -55,6 +55,6 @@
 
 .toTheTopLayout {
   position: fixed;
-  margin-bottom: 50px;
+  bottom: 50px;
   width: 100%;
 }
