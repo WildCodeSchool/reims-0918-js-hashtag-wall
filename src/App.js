@@ -27,7 +27,7 @@ const createPost = tweet => {
     : "N/A";
   return {
     picture: pictureMedia,
-    message: tweet.full_text,
+    message: tweet.text ? tweet.text : tweet.full_text,
     author: tweet.user.name,
     logo: tweet.user.profile_image_url,
     likeNb: tweet.favorite_count,
@@ -89,6 +89,7 @@ class App extends Component {
   };
 
   handleClickNewButton() {
+    this.socket = null;
     this.setState({ isTweetPageDisplayed: false, title: "", activeTab: "1" });
   }
 
