@@ -1,5 +1,13 @@
 import React from "react";
-import { Modal, ModalHeader, ModalBody, ModalFooter, Col } from "reactstrap";
+import {
+  Modal,
+  ModalHeader,
+  ModalBody,
+  ModalFooter,
+  Col,
+  Row,
+  Container
+} from "reactstrap";
 
 class TweetModal extends React.Component {
   render() {
@@ -19,24 +27,34 @@ class TweetModal extends React.Component {
           className={this.props.className}
         >
           <ModalHeader toggle={this.props.closeModal} close={closeBtn}>
-            <div
-              style={{
-                fontSize: "20px",
-                float: "right",
-                paddingLeft: "200px"
-              }}
-            >
-              {this.props.date}
-            </div>
-            <img
-              className="float-left mr-2"
-              src={this.props.logo}
-              alt="avatar"
-              style={{ borderRadius: "25px" }}
-            />
-            <div style={{ float: "left" }}>{this.props.author}</div>
-            <br />
-            <span style={{ fontSize: "15px" }}>{this.props.userName}</span>
+            <Container>
+              <Row>
+                <Col xs="4">
+                  <img
+                    src={this.props.logo}
+                    alt="avatar"
+                    style={{ borderRadius: "25px" }}
+                  />
+                </Col>
+                <Col xs="8">
+                  <p style={{ fontSize: "15px" }}>
+                    {this.props.author}
+                    <br />
+                    {this.props.userName}
+                  </p>
+                </Col>
+                <p
+                  style={{
+                    fontSize: "15px",
+                    position: "absolute",
+                    right: "40px",
+                    top: "16px"
+                  }}
+                >
+                  {this.props.date}
+                </p>
+              </Row>
+            </Container>
           </ModalHeader>
           <ModalBody>
             <div>

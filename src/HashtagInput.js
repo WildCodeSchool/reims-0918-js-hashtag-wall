@@ -36,7 +36,7 @@ const HashtagInput = props => {
             </InputGroupAddon>
           ) : (
             <UncontrolledTooltip placement="right" target="toolTip">
-              Enter your tag if you want to put an other brick in the Wall
+              Enter your tag if you want to put another brick in the Wall
             </UncontrolledTooltip>
           )}
         </InputGroup>
