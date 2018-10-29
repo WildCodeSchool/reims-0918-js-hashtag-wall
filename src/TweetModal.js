@@ -19,6 +19,15 @@ class TweetModal extends React.Component {
           className={this.props.className}
         >
           <ModalHeader toggle={this.props.closeModal} close={closeBtn}>
+            <div
+              style={{
+                fontSize: "20px",
+                float: "right",
+                paddingLeft: "400px"
+              }}
+            >
+              {this.props.date}
+            </div>
             <img
               className="float-left mr-2"
               src={this.props.logo}
@@ -29,7 +38,6 @@ class TweetModal extends React.Component {
             <br />
             <span style={{ fontSize: "15px" }}>{this.props.userName}</span>
           </ModalHeader>
-
           <ModalBody>
             <div>
               {this.props.picture !== "N/A" && (
@@ -45,7 +53,6 @@ class TweetModal extends React.Component {
               <p>{this.props.message}</p>
             </div>
           </ModalBody>
-
           <ModalFooter>
             <Col xs="6" className="text-center">
               <span className="heart">❤</span>
