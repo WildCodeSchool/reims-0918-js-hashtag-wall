@@ -1,6 +1,12 @@
 import React from "react";
 import "./HashtagInput.css";
-import { InputGroup, InputGroupAddon, Input, Button } from "reactstrap";
+import {
+  InputGroup,
+  InputGroupAddon,
+  Input,
+  Button,
+  UncontrolledTooltip
+} from "reactstrap";
 import Loading from "./Loading";
 
 const HashtagInput = props => {
@@ -29,7 +35,9 @@ const HashtagInput = props => {
               </Button>
             </InputGroupAddon>
           ) : (
-            ""
+            <UncontrolledTooltip placement="right" target="toolTip">
+              Enter your tag if you want to put an other brick in the Wall
+            </UncontrolledTooltip>
           )}
         </InputGroup>
         {!props.startLoad ? (
@@ -45,7 +53,9 @@ const HashtagInput = props => {
               disabled={props.title.length === 0}
               onClick={() => props.getTweet(props.title)}
             >
-              <p className="buttonText">#Start</p>
+              <p id="toolTip" className="buttonText">
+                #Start
+              </p>
             </Button>
           </div>
         ) : (
