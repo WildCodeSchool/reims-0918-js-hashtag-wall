@@ -7,6 +7,7 @@ import Header from "./Header";
 import TweetCard from "./TweetCard";
 import TweetModal from "./TweetModal";
 import classnames from "classnames";
+import Scrollchor from "react-scrollchor";
 import openSocket from "socket.io-client";
 import {
   Container,
@@ -156,12 +157,7 @@ class App extends Component {
             </Row>
           </Container>
         ) : (
-          <Container
-            fluid
-            className="tweet"
-            id="toTheTop"
-            style={{ height: "100vh" }}
-          >
+          <Container fluid className="tweet" style={{ height: "100vh" }}>
             {this.state.selectedTweet !== null && (
               <TweetModal
                 picture={this.state.selectedTweet.picture}
@@ -178,14 +174,13 @@ class App extends Component {
             )}
 
             <Row id="wallHeader" style={{ color: "white" }}>
-              <h1 className="mt-2" id="titleHashtag">
-                #{this.state.title}
-              </h1>
+              <h1 className="mt-2">#{this.state.title}</h1>
 
               <Button onClick={this.handleClickNewButton} color="primary">
                 <p className="textButton">#New</p>
               </Button>
             </Row>
+
             <Nav tabs className="navTabs d-flex justify-content-center">
               <NavItem>
                 <NavLink
@@ -242,12 +237,14 @@ class App extends Component {
                   ))}
                 </Masonry>
 
-                <a className="toTheTopLayout" href="#titleHashtag">
-                  <img
-                    src="images/arrow-alt-circle-up-regular.svg"
-                    alt="toTheTopp"
-                    className="buttonToTheTop"
-                  />
+                <a className="toTheTopLayout">
+                  <Scrollchor to="#wallHeader">
+                    <img
+                      src="images/arrow-alt-circle-up-regular.svg"
+                      alt="toTheTopp"
+                      className="buttonToTheTop"
+                    />
+                  </Scrollchor>
                 </a>
               </TabPane>
               <TabPane tabId="2">
@@ -268,12 +265,14 @@ class App extends Component {
                       />
                     ))}
                 </Masonry>
-                <a className="toTheTopLayout" href="#titleHashtag">
-                  <img
-                    src="images/arrow-alt-circle-up-regular.svg"
-                    alt="toTheTopp"
-                    className="buttonToTheTop"
-                  />
+                <a className="toTheTopLayout">
+                  <Scrollchor to="#wallHeader">
+                    <img
+                      src="images/arrow-alt-circle-up-regular.svg"
+                      alt="toTheTopp"
+                      className="buttonToTheTop"
+                    />
+                  </Scrollchor>
                 </a>
               </TabPane>
               <TabPane tabId="3">
@@ -298,12 +297,14 @@ class App extends Component {
                       )
                   )}
                 </Masonry>
-                <a className="toTheTopLayout" href="#toTheTop">
-                  <img
-                    src="images/arrow-alt-circle-up-regular.svg"
-                    alt="toTheTopp"
-                    className="buttonToTheTop"
-                  />
+                <a className="toTheTopLayout">
+                  <Scrollchor to="#wallHeader">
+                    <img
+                      src="images/arrow-alt-circle-up-regular.svg"
+                      alt="toTheTopp"
+                      className="buttonToTheTop"
+                    />
+                  </Scrollchor>
                 </a>
               </TabPane>
             </TabContent>
