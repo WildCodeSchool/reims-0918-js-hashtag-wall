@@ -23,7 +23,7 @@ class TweetModal extends React.Component {
               style={{
                 fontSize: "20px",
                 float: "right",
-                paddingLeft: "400px"
+                paddingLeft: "200px"
               }}
             >
               {this.props.date}
@@ -34,7 +34,7 @@ class TweetModal extends React.Component {
               alt="avatar"
               style={{ borderRadius: "25px" }}
             />
-            {this.props.author}
+            <div style={{ float: "left" }}>{this.props.author}</div>
             <br />
             <span style={{ fontSize: "15px" }}>{this.props.userName}</span>
           </ModalHeader>
