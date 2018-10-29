@@ -237,15 +237,13 @@ class App extends Component {
                   ))}
                 </Masonry>
 
-                <a className="toTheTopLayout">
-                  <Scrollchor to="#wallHeader">
-                    <img
-                      src="images/arrow-alt-circle-up-regular.svg"
-                      alt="toTheTopp"
-                      className="buttonToTheTop"
-                    />
-                  </Scrollchor>
-                </a>
+                <Scrollchor to="#wallHeader" className="toTheTopLayout">
+                  <img
+                    src="images/arrow-alt-circle-up-regular.svg"
+                    alt="toTheTopp"
+                    className="buttonToTheTop"
+                  />
+                </Scrollchor>
               </TabPane>
               <TabPane tabId="2">
                 <Masonry
@@ -265,15 +263,14 @@ class App extends Component {
                       />
                     ))}
                 </Masonry>
-                <a className="toTheTopLayout">
-                  <Scrollchor to="#wallHeader">
-                    <img
-                      src="images/arrow-alt-circle-up-regular.svg"
-                      alt="toTheTopp"
-                      className="buttonToTheTop"
-                    />
-                  </Scrollchor>
-                </a>
+
+                <Scrollchor to="#wallHeader" className="toTheTopLayout">
+                  <img
+                    src="images/arrow-alt-circle-up-regular.svg"
+                    alt="toTheTopp"
+                    className="buttonToTheTop"
+                  />
+                </Scrollchor>
               </TabPane>
               <TabPane tabId="3">
                 <Masonry
@@ -297,15 +294,14 @@ class App extends Component {
                       )
                   )}
                 </Masonry>
-                <a className="toTheTopLayout">
-                  <Scrollchor to="#wallHeader">
-                    <img
-                      src="images/arrow-alt-circle-up-regular.svg"
-                      alt="toTheTopp"
-                      className="buttonToTheTop"
-                    />
-                  </Scrollchor>
-                </a>
+
+                <Scrollchor to="#wallHeader" className="toTheTopLayout">
+                  <img
+                    src="images/arrow-alt-circle-up-regular.svg"
+                    alt="toTheTopp"
+                    className="buttonToTheTop"
+                  />
+                </Scrollchor>
               </TabPane>
             </TabContent>
             <Footer />
