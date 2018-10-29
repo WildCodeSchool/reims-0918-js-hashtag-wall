@@ -56,7 +56,6 @@ class TweetModal extends React.Component {
               </Row>
             </Container>
           </ModalHeader>
-
           <ModalBody>
             <div>
               {this.props.picture !== "N/A" && (
@@ -72,7 +71,6 @@ class TweetModal extends React.Component {
               <p>{this.props.message}</p>
             </div>
           </ModalBody>
-
           <ModalFooter>
             <Col xs="6" className="text-center">
               <span className="heart">❤</span>
