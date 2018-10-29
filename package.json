@@ -8,6 +8,7 @@
     "react-dom": "^16.5.2",
     "react-masonry-component": "^6.2.1",
     "react-scripts": "2.0.3",
+    "react-scrollchor": "^6.0.0",
     "reactstrap": "^6.4.0",
     "socket.io-client": "^2.1.1"
   },
