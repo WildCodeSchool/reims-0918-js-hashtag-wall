@@ -288,7 +288,9 @@ class App extends Component {
                           rtNb={postPicsTweet.rtNb}
                           date={postPicsTweet.date}
                           userName={postPicsTweet.userName}
+                          message={postPicsTweet.message}
                           tweetToModal={this.handleTweetToModal}
+                          activeTab={this.state.activeTab}
                           key={index}
                         />
                       )
