@@ -290,7 +290,7 @@ class App extends Component {
                           userName={postPicsTweet.userName}
                           message={postPicsTweet.message}
                           tweetToModal={this.handleTweetToModal}
-                          activeTab={this.state.activeTab}
+                          hideText //écris tel quel vaut "true"
                           key={index}
                         />
                       )

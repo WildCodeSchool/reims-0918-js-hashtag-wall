@@ -45,7 +45,7 @@ const TweetCard = props => {
 
       <CardBody className="pb-2">
         <Row>
-          {props.activeTab !== "3" && (
+          {!props.hideText && (
             <Col xs="12">
               <CardText className="pb-2">{props.message}</CardText>
             </Col>
