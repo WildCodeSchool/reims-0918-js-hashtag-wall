@@ -139,7 +139,7 @@ class App extends Component {
               <Header />
             </Row>
             <Row className="justify-content-center hashtagRow">
-              <Col sm="6">
+              <Col sm={{ size: 6 }}>
                 <HashtagInput
                   title={this.state.title}
                   onInputContent={this.handleInputContent}

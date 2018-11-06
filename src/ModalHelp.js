@@ -1,6 +1,13 @@
 import React, { Component } from "react";
 import "./ModalHelp.css";
-import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from "reactstrap";
+import {
+  Button,
+  Modal,
+  ModalHeader,
+  ModalBody,
+  ModalFooter,
+  Col
+} from "reactstrap";
 
 class ModalHelp extends Component {
   constructor(props) {
@@ -26,7 +33,11 @@ class ModalHelp extends Component {
     );
 
     return (
-      <div className="col-1 offset-11">
+      <Col
+        className="mb-3"
+        xs={{ size: 3, offset: 9 }}
+        md={{ size: 2, offset: 10 }}
+      >
         <Button color="primary" onClick={this.toggle}>
           {this.props.buttonLabel}
           #Help
@@ -115,7 +126,7 @@ class ModalHelp extends Component {
             <Button onClick={this.toggle}>Understood !</Button>
           </ModalFooter>
         </Modal>
-      </div>
+      </Col>
     );
   }
 }

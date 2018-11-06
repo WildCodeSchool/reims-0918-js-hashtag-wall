@@ -6,10 +6,10 @@ const Header = () => (
   <header>
     <Container fluid>
       <Row>
-        <Col sm="6">
+        <Col>
           <img
+            className="logo"
             src="images/logo_wall_white.png"
-            id="titleHeader"
             alt="logo wall"
           />
         </Col>

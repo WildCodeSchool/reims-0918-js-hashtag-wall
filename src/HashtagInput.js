@@ -45,14 +45,19 @@ const HashtagInput = props => {
         </InputGroup>
         {!props.startLoad ? (
           <div className="buttonPosition">
-            <img
-              src="images/twitterwhite.png"
-              className="logotwitter mt-5 mr-3"
-              alt="logoTwitter"
-            />
             <Container>
               <Row>
-                <Col sm="12">
+                <Col
+                  xl={{ size: "auto", offset: 4 }}
+                  md={{ size: "auto", offset: 3 }}
+                  xs={{ size: "auto", offset: 2 }}
+                >
+                  <img
+                    src="images/twitterwhite.png"
+                    className="logotwitter mt-5 mr-3"
+                    alt="logoTwitter"
+                  />
+
                   <Button
                     className="w-35 mt-5"
                     color="primary"
