@@ -5,7 +5,10 @@ import {
   InputGroupAddon,
   Input,
   Button,
-  UncontrolledTooltip
+  UncontrolledTooltip,
+  Container,
+  Row,
+  Col
 } from "reactstrap";
 import Loading from "./Loading";
 
@@ -47,16 +50,22 @@ const HashtagInput = props => {
               className="logotwitter mt-5 mr-3"
               alt="logoTwitter"
             />
-            <Button
-              className="w-25 mt-5"
-              color="primary"
-              disabled={props.title.length === 0}
-              onClick={() => props.getTweet(props.title)}
-            >
-              <p id="toolTip" className="buttonText">
-                #Start
-              </p>
-            </Button>
+            <Container>
+              <Row>
+                <Col sm="12">
+                  <Button
+                    className="w-35 mt-5"
+                    color="primary"
+                    disabled={props.title.length === 0}
+                    onClick={() => props.getTweet(props.title)}
+                  >
+                    <p id="toolTip" className="buttonText">
+                      #Start
+                    </p>
+                  </Button>
+                </Col>
+              </Row>
+            </Container>
           </div>
         ) : (
           <div className="d-flex justify-content-center">
