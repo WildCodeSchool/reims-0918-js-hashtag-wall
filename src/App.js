@@ -59,6 +59,7 @@ class App extends Component {
       selectedTweet: null,
       modal: false
     };
+    this.newTweets = [];
     this.handleClickNewButton = this.handleClickNewButton.bind(this);
     this.handleTweetToModal = this.handleTweetToModal.bind(this);
     this.toggleTab = this.toggleTab.bind(this);
@@ -81,14 +82,28 @@ class App extends Component {
         });
         this.socket = openSocket("http://localhost:5050");
 
-        console.log(hashtag);
+        console.log("hashtag" + hashtag);
         this.socket.on(`#${hashtag}`, data => {
-          let newList = [createPost(data), ...this.state.posts];
-          this.setState({ posts: newList });
+          console.log("data", data);
+          this.newTweets = [createPost(data), ...this.newTweets];
+          console.log("socket", this.newTweets);
+          // this.setState({ posts: newList });
         });
       });
   };
+  componentDidMount() {
+    setInterval(() => {
+      if (this.newTweets.length > 0) {
+        this.newTweets = [...this.newTweets, ...this.state.posts];
+        this.setState({ posts: this.newTweets });
+        console.log("newTweets", this.newTweets);
+      }
 
+      this.newTweets = [];
+
+      //parcourire le tableau newtweets si il a des tweets ajouter newtweets a posts puis vider newtweets
+    }, 3000);
+  }
   handleClickNewButton() {
     this.socket = null;
     this.setState({ isTweetPageDisplayed: false, title: "", activeTab: "1" });
