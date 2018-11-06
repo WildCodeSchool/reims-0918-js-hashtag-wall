@@ -45,9 +45,11 @@ const TweetCard = props => {
 
       <CardBody className="pb-2">
         <Row>
-          <Col xs="12">
-            <CardText className="pb-2">{props.message}</CardText>
-          </Col>
+          {!props.hideText && (
+            <Col xs="12">
+              <CardText className="pb-2">{props.message}</CardText>
+            </Col>
+          )}
           <Col xs="6">
             <CardText className="text-center">
               <span className="heart">❤</span>
