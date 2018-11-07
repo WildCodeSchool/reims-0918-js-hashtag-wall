@@ -15,7 +15,7 @@ const Header = () => (
         </Col>
       </Row>
       <Row>
-        <Col sm="12" md={{ size: 8, offset: 3 }}>
+        <Col>
           <p className="text-center">Transform your tag into an event</p>
         </Col>
       </Row>
