@@ -67,8 +67,8 @@ class TweetModal extends React.Component {
                 />
               )}
             </div>
-            <div>
-              <p>{this.props.message}</p>
+            <div className="mt-3">
+              <p style={{ fontSize: "1.5rem" }}>{this.props.message}</p>
             </div>
           </ModalBody>
           <ModalFooter>
