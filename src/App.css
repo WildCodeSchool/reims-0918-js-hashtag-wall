@@ -1,0 +1,60 @@
+.marginBot {
+  margin-bottom: -10rem;
+}
+.textButton {
+  text-align: center;
+  font-size: 25px;
+  max-height: 21px;
+}
+
+#wallHeader {
+  display: flex;
+  justify-content: space-between;
+  margin: 5px;
+}
+
+#titleHashtag {
+  font-size: 50px;
+  font-weight: bold;
+}
+
+.filterTweet {
+  margin-bottom: 3px;
+}
+
+.navTabs {
+  border-bottom: none !important;
+}
+
+.footerPosition {
+  position: fixed;
+  bottom: 0;
+}
+
+.hashtagRow {
+  margin-top: 15vh;
+}
+
+.navlink {
+  border-radius: 0.25rem;
+}
+
+.buttonToTheTop {
+  height: 50px;
+  float: right;
+  margin-right: 30px;
+  opacity: 0.5;
+}
+
+.buttonToTheTop:hover {
+  height: 55px;
+  float: right;
+  margin-right: 30px;
+  opacity: 1;
+}
+
+.toTheTopLayout {
+  position: fixed;
+  bottom: 50px;
+  width: 100%;
+}

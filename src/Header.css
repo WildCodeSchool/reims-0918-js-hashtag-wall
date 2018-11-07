@@ -1,0 +1,11 @@
+header {
+  font-weight: bold;
+  font-size: 25px;
+}
+header p {
+  margin-top: -20px;
+  color: white;
+}
+.logo {
+  width: 95%;
+}
